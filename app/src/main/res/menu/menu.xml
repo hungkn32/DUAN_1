@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/menu_trangchu"
+        android:icon="@drawable/baseline_home_24"
+        android:title="Trang Chủ"/>
+    <item android:id="@+id/menu_hoadon"
+    android:icon="@drawable/img"
+        android:title="Quản Lý Đơn Đặt Hàng"/>
+    <item android:id="@+id/menu_giay"
+        android:icon="@drawable/img_1"
+        android:title="Quản Lý Giày"/>
+    <item android:id="@+id/menu_loaigiay"
+        android:icon="@drawable/img_2"
+        android:title="Quản Lý Loại Giày"/>
+    <item android:id="@+id/menu_khachhang"
+        android:icon="@drawable/img_3"
+        android:title="Quản Lý Khách Hàng"/>
+    <item android:id="@+id/menu_nhanvien"
+        android:icon="@drawable/img_3"
+        android:title="Quản Lý Nhân Viên"/>
+    <group android:checkableBehavior="single">
+        <item android:title="Thống kê">
+            <menu>
+                <item
+                    android:id="@+id/menu_tk_top10"
+                    android:icon="@drawable/img_5"
+                    android:title="Top 10 giày bán chạy" />
+                <item
+                    android:id="@+id/menu_tk_DoanhThu"
+                    android:icon="@drawable/img_4"
+                    android:title="Doanh thu" />
+            </menu>
+        </item>
+    </group>
+    <group android:checkableBehavior="single">
+        <item android:title="Người Dùng">
+            <menu>
+                <item
+                    android:id="@+id/menu_ressetpass"
+                    android:icon="@drawable/img_7"
+                    android:title="Đổi Mật Khẩu" />
+                <item
+                    android:id="@+id/menu_logout"
+                    android:icon="@drawable/img_6"
+                    android:title="Đăng Xuất" />
+            </menu>
+        </item>
+    </group>
+
+</menu>
