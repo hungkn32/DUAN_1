@@ -31,8 +31,8 @@ public class Login extends AppCompatActivity {
         btnlogin = findViewById(R.id.btnlogin);
         chkSave = findViewById(R.id.chksave);
         SharedPreferences pref = getSharedPreferences("User_File",MODE_PRIVATE);
-        ed_txtuser.setText(pref.getString("hoTen",""));
-        ed_txtpass.setText(pref.getString("matKhau",""));
+        ed_txtuser.setText(pref.getString("tenDangNhap",""));
+        ed_txtpass.setText(pref.getString("matkhau",""));
         chkSave.setChecked(pref.getBoolean("Remember",false));
 
         dao = new dangnhapDao(this);
@@ -52,7 +52,6 @@ public class Login extends AppCompatActivity {
 
             }
         });
-
     }
     private void rememberUser(String u, String p, boolean status) {
         SharedPreferences pref = getSharedPreferences("User_File",MODE_PRIVATE);

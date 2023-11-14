@@ -7,9 +7,9 @@
     android:layout_height="200dp">
 
     <ImageView
-        android:src="@drawable/img_8"
         android:layout_width="wrap_content"
-        android:layout_height="140dp"/>
+        android:layout_height="149dp"
+        android:src="@drawable/img_8" />
     <TextView
         android:id="@+id/txt_HeaderTextView"
         android:text="WelCome Admin"

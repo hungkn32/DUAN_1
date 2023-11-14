@@ -35,7 +35,7 @@ public class useAdapter extends RecyclerView.Adapter<useAdapter.useViewholer> {
     @Override
     public void onBindViewHolder(@NonNull useViewholer holder, int position) {
         User user = mlistuser.get(position);
-        if (user ==null){
+        if (user == null){
             return;
         }
         holder.img.setImageResource(user.getResouceimg());
@@ -44,6 +44,9 @@ public class useAdapter extends RecyclerView.Adapter<useAdapter.useViewholer> {
 
     @Override
     public int getItemCount() {
+        if (mlistuser !=null){
+            return mlistuser.size();
+        }
         return 0;
     }
 

@@ -12,9 +12,14 @@ import androidx.fragment.app.FragmentManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
+import com.example.duan_1.Dao.dangnhapDao;
 import com.example.duan_1.fragment.ChangePassFragment;
 import com.example.duan_1.fragment.DoanhThuFragment;
 import com.example.duan_1.fragment.GiayFragment;
@@ -31,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private NavigationView navigationView;
     Context context = this;
+    TextView tvUser;
+    View mHeaderView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,10 +47,26 @@ public class MainActivity extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbar);
         navigationView = findViewById(R.id.navlayout);
         setSupportActionBar(toolbar);
+        getSupportFragmentManager().beginTransaction().replace(R.id.framelayout,new TrangChuFragment()).commit();
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open, R.string.close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
+
+//        mHeaderView = navigationView.getHeaderView(0);
+//        tvUser = mHeaderView.findViewById(R.id.txt_HeaderTextView);
+//        Intent i = getIntent();
+//        String user = i.getStringExtra("user");
+//        dangnhapDao dao = new dangnhapDao(this);
+////         dao = dangnhapDao.getID(user);
+////        String username = thuThu.getHoTen();
+////        tvUser.setText("Welcome " + username + "!");
+//
+//        // admin co quyen add user
+//        if (user.equalsIgnoreCase("nhanvien,khachhang")) {
+//            navigationView.getMenu().findItem(R.id.menu_tk_top10).setVisible(false);
+//            navigationView.getMenu().findItem(R.id.menu_tk_DoanhThu).setVisible(false);
+//        }
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -51,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
                 if(item.getItemId()==R.id.menu_trangchu){
                     TrangChuFragment frgtc = new TrangChuFragment();
                     relaceFrg(frgtc);
-                    toolbar.setTitle("TRang Chủ");
+                    toolbar.setTitle("Trang Chủ");
             } if (item.getItemId() == R.id.menu_hoadon) {
                     HoaDonFragment frgPM = new HoaDonFragment();
                     relaceFrg(frgPM);
@@ -101,6 +124,15 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
+        //hienthichucnang
+//        SharedPreferences sharedPreferences = getSharedPreferences("User-File",MODE_PRIVATE);
+//        String loaitk = sharedPreferences.getString("tenDangNhap","");
+//        if (!loaitk.equals("admin")){
+//            Menu menu = navigationView.getMenu();
+//            menu.findItem(R.id.menu_tk_DoanhThu).setVisible(false);
+//            menu.findItem(R.id.menu_tk_top10).setVisible(false);
+//        }
+
 
     }
     public void relaceFrg(Fragment frg){
