@@ -4,9 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardCornerRadius="10dp"
     android:layout_marginTop="10dp"
-    android:layout_marginStart="10dp"
     android:layout_marginEnd="10dp"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -30,7 +29,7 @@
             >
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
+                android:layout_height="160dp"
                 android:id="@+id/img_user"
                 android:src="@drawable/giayadidas"
                 android:scaleType="centerCrop"
@@ -42,12 +41,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#D63F2B"
-            android:textSize="40dp"
+            android:textSize="20dp"
             android:padding="6dp"
             android:id="@+id/txt_gia"
             android:text="299.000đ"
             android:textStyle="bold|italic"
-            android:layout_gravity="center"
             />
     </LinearLayout>
 </androidx.cardview.widget.CardView>

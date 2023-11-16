@@ -43,11 +43,17 @@ public class TrangChuFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_trangchu, container, false);
         rcv = view.findViewById(R.id.rcv_list);
-        mlistuser = getlistuer();
+        mlistuser = new ArrayList<>();
+        mlistuser.add(new User("30%",R.drawable.giayadidas, "100.000đ"));
+        mlistuser.add(new User("30%",R.drawable.giayadidas, "100.000đ"));
+        mlistuser.add(new User("30%",R.drawable.giayadidas, "100.000đ"));
+        mlistuser.add(new User("30%",R.drawable.giayadidas, "100.000đ"));
+        mlistuser.add(new User("30%",R.drawable.giayadidas, "100.000đ"));
+
+        adapter = new useAdapter(getContext(),mlistuser);
         GridLayoutManager layoutManager = new GridLayoutManager(getContext(), 3);
         rcv.setLayoutManager(layoutManager);
-        adapter = new useAdapter(getContext(),mlistuser);
-         rcv.setAdapter(adapter);
+        rcv.setAdapter(adapter);
 
 
         viewPager = view.findViewById(R.id.viewpager);
@@ -108,15 +114,9 @@ public class TrangChuFragment extends Fragment {
         }
     }
 
-    private List<User> getlistuer() {
-        List<User> list = new ArrayList<>();
-        list.add(new User("30%",R.drawable.img_11, "User name1"));
-        list.add(new User("30%",R.drawable.img_11, "User name1"));
-        list.add(new User("30%",R.drawable.img_11, "User name1"));
-        list.add(new User("30%",R.drawable.img_11, "User name1"));
-        list.add(new User("30%",R.drawable.img_11, "User name1"));
-
-
-        return list;
-    }
+//    private List<User> getlistuer() {
+//        List<User> list = new ArrayList<>();
+//
+//        return list;
+//    }
 }

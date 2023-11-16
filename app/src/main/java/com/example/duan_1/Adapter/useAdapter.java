@@ -40,6 +40,10 @@ public class useAdapter extends RecyclerView.Adapter<useAdapter.useViewholer> {
 
     @Override
     public int getItemCount() {
+        if(mlistuser!=null){
+            return mlistuser.size();
+        }
+
         return 0;
     }
 
