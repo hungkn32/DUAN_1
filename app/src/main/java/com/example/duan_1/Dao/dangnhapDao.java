@@ -46,11 +46,11 @@ public class dangnhapDao {
         public boolean Register(String username, String hoten, String password) {
                 SQLiteDatabase sqLiteDatabase = dbHelper.getWritableDatabase();
                 ContentValues values = new ContentValues();
-                values.put("maTT", username);
-                values.put("hoTen", hoten);
-                values.put("matKhau", password);
+                values.put("maadmin", username);
+                values.put("tenDangNhap", hoten);
+                values.put("matkhau", password);
 
-                long check = sqLiteDatabase.insert("THUTHU", null, values);
+                long check = sqLiteDatabase.insert("ADMIN", null, values);
                 if (check != 0) {
                         return true;
                 } else {

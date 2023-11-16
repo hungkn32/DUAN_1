@@ -17,7 +17,6 @@
             android:layout_height="300dp"
             android:src="@drawable/img_11"
             android:scaleType="centerCrop"
-
             android:id="@+id/img_slide"
             />
     </androidx.cardview.widget.CardView>

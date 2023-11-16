@@ -33,6 +33,7 @@ public class TrangChuFragment extends Fragment {
     private CircleIndicator circleIndicator;
     private photoAdapter photoadapter;
     private List<photo> mlistphoto;
+    private List<User> mlistuser;
     private Timer timer;
     private RecyclerView rcv;
     private useAdapter adapter;
@@ -42,10 +43,13 @@ public class TrangChuFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_trangchu, container, false);
         rcv = view.findViewById(R.id.rcv_list);
-        adapter = new useAdapter(getContext());
+        mlistuser = getlistuer();
         GridLayoutManager layoutManager = new GridLayoutManager(getContext(), 3);
         rcv.setLayoutManager(layoutManager);
-        adapter.setdata(getlistuer());
+        adapter = new useAdapter(getContext(),mlistuser);
+         rcv.setAdapter(adapter);
+
+
         viewPager = view.findViewById(R.id.viewpager);
         circleIndicator = view.findViewById(R.id.circle);
         mlistphoto = getlistphoto();
@@ -63,8 +67,8 @@ public class TrangChuFragment extends Fragment {
         listphoto.add(new photo(R.drawable.img_11));
         listphoto.add(new photo(R.drawable.img_12));
         listphoto.add(new photo(R.drawable.img_13));
-//        listphoto.add(new photo(R.drawable.img_14));
-//        listphoto.add(new photo(R.drawable.img_15));
+        listphoto.add(new photo(R.drawable.img_14));
+        listphoto.add(new photo(R.drawable.img_15));
         return listphoto;
     }
 
@@ -106,17 +110,12 @@ public class TrangChuFragment extends Fragment {
 
     private List<User> getlistuer() {
         List<User> list = new ArrayList<>();
-        list.add(new User(R.drawable.img_11, "User name1"));
-        list.add(new User(R.drawable.img_16, "User name2"));
-        list.add(new User(R.drawable.img_16, "User name2"));
+        list.add(new User("30%",R.drawable.img_11, "User name1"));
+        list.add(new User("30%",R.drawable.img_11, "User name1"));
+        list.add(new User("30%",R.drawable.img_11, "User name1"));
+        list.add(new User("30%",R.drawable.img_11, "User name1"));
+        list.add(new User("30%",R.drawable.img_11, "User name1"));
 
-        list.add(new User(R.drawable.img_16, "User name2"));
-        list.add(new User(R.drawable.img_16, "User name2"));
-        list.add(new User(R.drawable.img_16, "User name2"));
-
-        list.add(new User(R.drawable.img_16, "User name2"));
-        list.add(new User(R.drawable.img_16, "User name2"));
-        list.add(new User(R.drawable.img_16, "User name2"));
 
         return list;
     }

@@ -3,4 +3,5 @@
     <string name="open">Open nav</string>
     <string name="close">Close nav</string>
     <color name="TrangThai">#4CAF50</color>
+    <string name="sign_up">Don\'t have an account? <b>Sign up</b></string>
 </resources>

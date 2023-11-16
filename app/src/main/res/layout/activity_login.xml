@@ -7,15 +7,13 @@
     android:orientation="vertical"
     android:background="#2196F3"
     tools:context=".Login">
-
-
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
         android:layout_marginTop="30dp"
         android:layout_marginBottom="20dp"
-        android:text="Đăng nhập"
+        android:text="Login"
         android:textColor="#FF9800"
         android:textSize="35dp"
         android:textStyle="italic" />
@@ -115,7 +113,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="chưa có tài khoản Đăng Kí?"
+            android:text="@string/sign_up"
             android:layout_marginTop="420dp"
             android:gravity="center_horizontal"
             />
