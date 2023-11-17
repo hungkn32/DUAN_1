@@ -49,6 +49,10 @@ public class TrangChuFragment extends Fragment {
         mlistuser.add(new User("30%",R.drawable.giayadidas, "100.000đ"));
         mlistuser.add(new User("30%",R.drawable.giayadidas, "100.000đ"));
         mlistuser.add(new User("30%",R.drawable.giayadidas, "100.000đ"));
+        mlistuser.add(new User("30%",R.drawable.giayadidas, "100.000đ"));
+        mlistuser.add(new User("30%",R.drawable.giayadidas, "100.000đ"));
+        mlistuser.add(new User("30%",R.drawable.giayadidas, "100.000đ"));
+        mlistuser.add(new User("30%",R.drawable.giayadidas, "100.000đ"));
 
         adapter = new useAdapter(getContext(),mlistuser);
         GridLayoutManager layoutManager = new GridLayoutManager(getContext(), 3);
