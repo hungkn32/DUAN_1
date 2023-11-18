@@ -12,20 +12,16 @@ import androidx.fragment.app.FragmentManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
-import com.example.duan_1.Dao.dangnhapDao;
 import com.example.duan_1.fragment.ChangePassFragment;
 import com.example.duan_1.fragment.DoanhThuFragment;
 import com.example.duan_1.fragment.GiayFragment;
 import com.example.duan_1.fragment.HoaDonFragment;
 import com.example.duan_1.fragment.KhachHangFragment;
-import com.example.duan_1.fragment.LoaiGiayFragment;
 import com.example.duan_1.fragment.NhanVienFragment;
 import com.example.duan_1.fragment.Top10Fragment;
 import com.example.duan_1.fragment.TrangChuFragment;
@@ -83,10 +79,6 @@ public class MainActivity extends AppCompatActivity {
                     GiayFragment frgLS = new GiayFragment();
                     relaceFrg(frgLS);
                     toolbar.setTitle("Quản lý Giày");
-                } else if (item.getItemId() == R.id.menu_loaigiay) {
-                    LoaiGiayFragment frgS = new LoaiGiayFragment();
-                    relaceFrg(frgS);
-                    toolbar.setTitle("Quản lý Loại Giày");
                 } else if (item.getItemId() == R.id.menu_khachhang) {
                     KhachHangFragment frgTV = new KhachHangFragment();
                     relaceFrg(frgTV);

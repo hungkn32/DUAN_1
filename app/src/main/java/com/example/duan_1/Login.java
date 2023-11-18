@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.duan_1.Dao.dangnhapDao;
@@ -20,6 +21,7 @@ public class Login extends AppCompatActivity {
     Button btnlogin;
     CheckBox chkSave;
     private dangnhapDao dao;
+    TextView txtdk;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +32,13 @@ public class Login extends AppCompatActivity {
         in_pass = findViewById(R.id.in_Pass);
         btnlogin = findViewById(R.id.btnlogin);
         chkSave = findViewById(R.id.chksave);
+        txtdk = findViewById(R.id.txtdk);
+        txtdk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(Login.this,Sign_up.class));
+            }
+        });
         SharedPreferences pref = getSharedPreferences("User_File",MODE_PRIVATE);
         ed_txtuser.setText(pref.getString("tenDangNhap",""));
         ed_txtpass.setText(pref.getString("matkhau",""));
@@ -53,6 +62,7 @@ public class Login extends AppCompatActivity {
             }
         });
     }
+
     private void rememberUser(String u, String p, boolean status) {
         SharedPreferences pref = getSharedPreferences("User_File",MODE_PRIVATE);
         SharedPreferences.Editor edit = pref.edit();
@@ -68,4 +78,6 @@ public class Login extends AppCompatActivity {
         //lưu lại toàn bộ
         edit.commit();
     }
+
+
 }

@@ -33,10 +33,10 @@
         android:paddingHorizontal="10dp">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/ed_txtUser"
+            android:id="@+id/ed_txtmadn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Tên Đăng Nhập"
+            android:hint="Mã Đăng Nhập"
             android:textSize="18dp" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -49,14 +49,29 @@
         android:paddingHorizontal="10dp">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/ed_txtpassword"
+            android:id="@+id/ed_txtuser"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="PassWord"
+            android:hint="Tên Đăng Nhập"
             android:textSize="18dp" />
     </com.google.android.material.textfield.TextInputLayout>
 
 
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/in_password1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="30dp"
+        android:paddingHorizontal="10dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/ed_txtpassword1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="PASSWORD"
+            android:textSize="18dp" />
+    </com.google.android.material.textfield.TextInputLayout>
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/in_password2"
         android:layout_width="match_parent"
@@ -69,9 +84,11 @@
             android:id="@+id/ed_txtpassword2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="re-enter password"
+            android:hint="REF-PASSWORD"
             android:textSize="18dp" />
     </com.google.android.material.textfield.TextInputLayout>
+
+
 
 
 
@@ -84,10 +101,10 @@
         android:paddingHorizontal="10dp">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/ed_txtsdt"
+            android:id="@+id/ed_txtltk"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Số Điện Thoại"
+            android:hint="Loại Tài Khoản"
             android:textSize="18dp" />
     </com.google.android.material.textfield.TextInputLayout>
 

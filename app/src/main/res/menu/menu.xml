@@ -9,9 +9,6 @@
     <item android:id="@+id/menu_giay"
         android:icon="@drawable/img_2"
         android:title="Quản Lý Giày"/>
-    <item android:id="@+id/menu_loaigiay"
-        android:icon="@drawable/img_3"
-        android:title="Quản Lý Loại Giày"/>
     <item android:id="@+id/menu_khachhang"
         android:icon="@drawable/img_8"
         android:title="Quản Lý Khách Hàng"/>
