@@ -22,8 +22,6 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL(tb_Admin);
         String tb_giay = "Create table GIAY(maGiay integer primary key  autoincrement, tenGiay text,loaiGiay text ,giaTien integer)";
         db.execSQL(tb_giay);
-        String tb_loaigiay = "Create table LOAIGIAY(maLoai integer primary key,loaiGiay text)";
-        db.execSQL(tb_loaigiay);
         String tb_khachhang = "Create table KHACHHANG(maKH integer,tenKH text,namSinh text,diaChi text)";
         db.execSQL(tb_khachhang);
         String tb_dathang = "Create table DATHANG(maDH integer primary key autoincrement,tenKH text,diaChi tex,tenGiay text,loaiGiay text,giaTien integer,ngayMua date,trangThai integer)";
@@ -32,6 +30,14 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL("Insert into ADMIN values(0,'admin','admin123',1)," +
                 "(1,'nhanvien','nhanvien123',2)," +
                 "(2,'khachhang','khachhang123',3)");
+        db.execSQL("Insert into GIAY values(0,'Nike White','Nike',200000)," +
+                "(1,'Adidas 101For','Adidas',98333)," +
+                "(2,'Bits 12','Btit',39999)");
+        db.execSQL("Insert into KHACHHANG values(1,'ThànhLQ','2003','Bắc Giang')," +
+                "(2,'HưngKN','2004','Hà Nội')," +
+                "(3,'GiangTV','2004','HÀ Nội')");
+        db.execSQL("Insert into DATHANG values(1234,'HiếuNv','Thôn Muồng Xã Tản Viên','Adidas 101for','Adidas','98333','19/11/2023',1)");
+
 
 
 

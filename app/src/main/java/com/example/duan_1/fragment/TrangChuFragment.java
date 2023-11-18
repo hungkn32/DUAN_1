@@ -45,13 +45,14 @@ public class TrangChuFragment extends Fragment {
         rcv = view.findViewById(R.id.rcv_list);
         mlistuser = new ArrayList<>();
         mlistuser.add(new User("30%",R.drawable.giayadidas, "100.000đ"));
-        mlistuser.add(new User("30%",R.drawable.img_22, "199.000đ"));
-        mlistuser.add(new User("30%",R.drawable.img_23, "299.000đ"));
-        mlistuser.add(new User("30%",R.drawable.img_24, "569.000đ"));
-        mlistuser.add(new User("30%",R.drawable.img_25, "159.000đ"));
-        mlistuser.add(new User("30%",R.drawable.img_26, "199.000đ"));
+        mlistuser.add(new User("30%",R.drawable.img_22, "100.000đ"));
+        mlistuser.add(new User("30%",R.drawable.img_23, "100.000đ"));
+        mlistuser.add(new User("30%",R.drawable.img_24, "100.000đ"));
+        mlistuser.add(new User("30%",R.drawable.img_25, "100.000đ"));
+        mlistuser.add(new User("30%",R.drawable.img_26, "100.000đ"));
+
         adapter = new useAdapter(getContext(),mlistuser);
-        GridLayoutManager layoutManager = new GridLayoutManager(getContext(), 2);
+        GridLayoutManager layoutManager = new GridLayoutManager(getContext(), 3);
         rcv.setLayoutManager(layoutManager);
         rcv.setAdapter(adapter);
 
