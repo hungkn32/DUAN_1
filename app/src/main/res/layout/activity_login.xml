@@ -90,23 +90,12 @@
 
             <Button
                 android:id="@+id/btnlogin"
-                android:layout_width="140dp"
-                android:layout_height="50dp"
-                android:layout_marginRight="10dp"
-                android:background="@color/white"
+                android:layout_width="250dp"
+                android:layout_height="60dp"
                 android:text="Đăng Nhập"
-                android:textColor="#E91E63"
-                android:textSize="18dp"
-                android:textStyle="bold" />
-
-            <Button
-                android:id="@+id/btn_Cancel"
-                android:layout_width="140dp"
-                android:layout_height="50dp"
-                android:background="@color/cardview_dark_background"
-                android:backgroundTint="#8A55646A"
-                android:text="Hủy"
-                android:textSize="18dp"
+                android:textColor="#063A7A"
+                android:backgroundTint="#F16CEF"
+                android:textSize="28dp"
                 android:textStyle="bold" />
         </LinearLayout>
 
