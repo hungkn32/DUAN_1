@@ -8,7 +8,7 @@ import androidx.annotation.Nullable;
 
 public class DBHelper extends SQLiteOpenHelper {
     public static final String dbname = "QLSHOES";
-    public static final int dbvesion = 1;
+    public static final int dbvesion = 3;
 
     public DBHelper(Context context) {
         super(context, dbname, null, dbvesion);
@@ -33,9 +33,9 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL("Insert into GIAY values(0,'Nike White','Nike',200000)," +
                 "(1,'Adidas 101For','Adidas',98333)," +
                 "(2,'Bits 12','Btit',39999)");
-        db.execSQL("Insert into KHACHHANG values(1,'ThànhLQ','2003','Bắc Giang')," +
-                "(2,'HưngKN','2004','Hà Nội')," +
-                "(3,'GiangTV','2004','HÀ Nội')");
+        db.execSQL("Insert into KHACHHANG values(0,'ThànhLQ','2003','Bắc Giang')," +
+                "(1,'HưngKN','2004','Hà Nội')," +
+                "(2,'GiangTV','2004','HÀ Nội')");
         db.execSQL("Insert into DATHANG values(1234,'HiếuNv','Thôn Muồng Xã Tản Viên','Adidas 101for','Adidas','98333','19/11/2023',1)");
 
 
@@ -48,7 +48,7 @@ public class DBHelper extends SQLiteOpenHelper {
         if (i != i1) {
             db.execSQL("DROP TABLE IF EXISTS ADMIN");
             db.execSQL("DROP TABLE IF EXISTS GIAY");
-            db.execSQL("DROP TABLE IF EXISTS LOAIGIAY");
+            db.execSQL("DROP TABLE IF EXISTS KHACHHANG");
             db.execSQL("DROP TABLE IF EXISTS DATHANG");
             onCreate(db);
         }
