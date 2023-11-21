@@ -45,13 +45,36 @@
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
         android:layout_marginTop="5dp"/>
-
-    <Button
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Thêm"
-        android:layout_marginTop="100dp"
-        />
+        android:orientation="horizontal"
+        android:layout_marginTop="70dp"
+        android:gravity="center"
+        >
+        <Button
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:hint="Thêm"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:backgroundTint="#72F1D8"
+            android:textColor="@color/black"
+            android:id="@+id/btnaddgiay"
+            android:layout_marginRight="10dp"
+            />
+        <Button
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:hint="Hủy"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:backgroundTint="#72F1D8"
+            android:textColor="@color/black"
+            android:id="@+id/btnhuyaddgiay"
+            />
+    </LinearLayout>
+
 
 
 </LinearLayout>
