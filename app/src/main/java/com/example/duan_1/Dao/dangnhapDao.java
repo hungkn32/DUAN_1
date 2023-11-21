@@ -26,27 +26,10 @@ public class dangnhapDao {
                         return false;
                 }
         }
-        public boolean updateMK(String username, String oldPass, String newPass){
-                SQLiteDatabase db = dbHelper.getWritableDatabase();
-                Cursor cursor = db.rawQuery("select * from ThuThu where hoTen = ? and matKhau = ?", new String[]{username,oldPass});
-                if (cursor.getCount() > 0){
-                        ContentValues values = new ContentValues();
-                        values.put("matKhau", newPass);
-                        long check = db.update("ThuThu",values,"hoTen = ?",new String[]{username});
-                        if(check == -1){
-                                return false;
-                        }else {
-                                return true;
-                        }
-                }
-                return false;
 
-
-        }
-        public boolean Register(String madn, String tendn, String password,String loaitk) {
+        public boolean Register( String tendn, String password,String loaitk) {
                 SQLiteDatabase sqLiteDatabase = dbHelper.getWritableDatabase();
                 ContentValues values = new ContentValues();
-                values.put("maadmin", madn);
                 values.put("tenDangNhap", tendn);
                 values.put("matkhau", password);
                 values.put("loaitk", loaitk);

@@ -21,7 +21,7 @@ public class Login extends AppCompatActivity {
     Button btnlogin;
     CheckBox chkSave;
     private dangnhapDao dao;
-    TextView txtdk;
+    TextView txtdangki;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,11 +32,12 @@ public class Login extends AppCompatActivity {
         in_pass = findViewById(R.id.in_Pass);
         btnlogin = findViewById(R.id.btnlogin);
         chkSave = findViewById(R.id.chksave);
-        txtdk = findViewById(R.id.txtdk);
-        txtdk.setOnClickListener(new View.OnClickListener() {
+        txtdangki = findViewById(R.id.txtdk);
+        txtdangki.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(Login.this,Sign_up.class));
+                finish();
             }
         });
         SharedPreferences pref = getSharedPreferences("User_File",MODE_PRIVATE);
