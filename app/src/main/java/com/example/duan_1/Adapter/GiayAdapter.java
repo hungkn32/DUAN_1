@@ -34,14 +34,14 @@ public class GiayAdapter extends RecyclerView.Adapter<GiayAdapter.ViewHoler> {
     @Override
     public void onBindViewHolder(@NonNull ViewHoler holder, int position) {
         giay g = list.get(position);
-        Glide.with(context)
-                .load(g.getAvataanh())
-                .into(holder.img);
+
         holder.txtmagiay.setText(String.valueOf("Mã Giày: "+g.getMagiay()));
         holder.txttengiay.setText("Tên Giày: "+g.getTenGiay());
         holder.txtloaigiay.setText("Loại Giày: "+g.getLoaiGiay());
         holder.txtgiatien.setText(String.valueOf("Giá Tiền: "+g.getGiaTien()));
-
+        Glide.with(context)
+                .load(g.getAvataanh())
+                .into(holder.img);
     }
 
     @Override

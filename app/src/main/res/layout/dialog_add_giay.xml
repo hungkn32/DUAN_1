@@ -25,7 +25,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/edtloaigiay"
-        android:hint="Nhập tên Giày"
+        android:hint="Nhập Loại Giày"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
         android:layout_marginTop="5dp"/>
@@ -33,7 +33,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/edtgiatien"
-        android:hint="Nhập tên Giày"
+        android:hint="Nhập Giá Tiền"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
         android:layout_marginTop="5dp"/>
@@ -41,7 +41,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/edtavatagiay"
-        android:hint="Nhập tên Giày"
+        android:hint="Nhập url ảnh"
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
         android:layout_marginTop="5dp"/>
@@ -52,14 +52,6 @@
         android:hint="Thêm"
         android:layout_marginTop="100dp"
         />
-
-    <EditText
-        android:id="@+id/editTextText3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="text"
-        android:text="Name" />
 
 
 </LinearLayout>
