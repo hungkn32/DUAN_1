@@ -8,7 +8,7 @@ import androidx.annotation.Nullable;
 
 public class DBHelper extends SQLiteOpenHelper {
     public static final String dbname = "QLSHOES";
-    public static final int dbvesion = 7;
+    public static final int dbvesion = 8;
 
     public DBHelper(Context context) {
 
@@ -37,14 +37,12 @@ public class DBHelper extends SQLiteOpenHelper {
         String img2 = "/path/to/your/img_22.png";
         String img3 = "/path/to/your/img_23.png";
 
-        String insertData = "INSERT INTO GIAY VALUES " +
+        db.execSQL( "INSERT INTO GIAY VALUES " +
                 "(1,'Giày Sneaker A', 'Sneaker', 100, '" + img1 + "')," +
                 "(2,'Giày Formal B', 'Formal', 150, '" + img2 + "')," +
-                "(3,'Giày Sport C', 'Sport', 80, '" + img3 + "');";
+                "(3,'Giày Sport C', 'Sport', 80, '" + img3 + "')");
 
 
-
-        db.execSQL(insertData);
 
         db.execSQL("Insert into KHACHHANG values(0,'ThànhLQ','2003',02928222,'Bắc Giang')," +
                 "(1,'HưngKN','2004',098228722,'Hà Nội')," +

@@ -1,6 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    android:orientation="vertical"
     android:layout_height="match_parent">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:hint="mã giày"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:id="@+id/txtmagiay"
+        />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/ud_tengiay"
+        android:hint="Tên giày Mới "
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="5dp"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/ud_loaigiay"
+        android:hint="Nhập Loại Giày Mới"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="5dp"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/ud_giatien"
+        android:hint="Nhập Giá Tiền Mới"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="5dp"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/ud_avatargiay"
+        android:hint="Nhập url ảnh mới"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="5dp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="70dp"
+        android:gravity="center"
+        >
+        <Button
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:hint="Sửa"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:backgroundTint="#72F1D8"
+            android:textColor="@color/black"
+            android:id="@+id/button_ud_giay"
+            android:layout_marginRight="10dp"
+            />
+        <Button
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:hint="Hủy"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:backgroundTint="#72F1D8"
+            android:textColor="@color/black"
+            android:id="@+id/btn_ud_huy"
+            />
+    </LinearLayout>
+
+
+
+</LinearLayout>
