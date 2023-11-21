@@ -25,9 +25,9 @@
 
         <LinearLayout
             android:layout_width="238dp"
-            android:layout_height="130dp"
+            android:layout_height="165dp"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:orientation="vertical">
 
             <LinearLayout
@@ -41,10 +41,11 @@
                     android:text="Mã Khách Hàng:"
                     android:textColor="@color/black"
                     android:textSize="15sp"
-                    android:textStyle="bold" />
+                    />
 
                 <TextView
                     android:id="@+id/txtmakh1"
+                    android:textStyle="bold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
@@ -64,7 +65,7 @@
                     android:text="Tên Khách Hàng:"
                     android:textColor="@color/black"
                     android:textSize="15sp"
-                    android:textStyle="bold" />
+                     />
 
                 <TextView
                     android:id="@+id/txttenkh1"
@@ -72,7 +73,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:textSize="18sp"
-                    android:textColor="#FF5722"/>
+                    android:textStyle="bold" />
 
             </LinearLayout>
 
@@ -87,14 +88,15 @@
                     android:text="Năm Sinh:"
                     android:textColor="@color/black"
                     android:textSize="15sp"
-                    android:textStyle="bold" />
+                   />
 
                 <TextView
                     android:id="@+id/txtngaysinhkh1"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_marginLeft="5dp"
-                    android:textSize="18sp" />
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
 
             </LinearLayout>
 
@@ -109,13 +111,14 @@
                     android:text="Số điện thoại :"
                     android:textColor="@color/black"
                     android:textSize="15sp"
-                    android:textStyle="bold" />
+                   />
 
                 <TextView
                     android:id="@+id/txtsdt1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
+                    android:textStyle="bold"
                     android:textSize="18sp" />
 
             </LinearLayout>
@@ -131,15 +134,23 @@
                     android:text="Địa chỉ :"
                     android:textColor="@color/black"
                     android:textSize="15sp"
-                    android:textStyle="bold" />
+                     />
 
                 <TextView
                     android:id="@+id/txtdiachi1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
+                    android:textStyle="bold"
                     android:textSize="18sp" />
             </LinearLayout>
+
+            <ImageButton
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="150dp"
+                android:backgroundTint="@color/common_google_signin_btn_text_dark_default"
+                android:src="@drawable/baseline_delete_24" />
         </LinearLayout>
     </LinearLayout>
 </androidx.cardview.widget.CardView>

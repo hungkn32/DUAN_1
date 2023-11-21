@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#2196F3"
+    android:background="#6CABDD"
     tools:context=".Login">
     <TextView
         android:layout_width="match_parent"
@@ -14,13 +14,13 @@
         android:layout_marginTop="30dp"
         android:layout_marginBottom="20dp"
         android:text="Login"
-        android:textColor="#FF9800"
-        android:textSize="35dp"
+        android:textColor="#E91E63"
+        android:textSize="50dp"
         android:textStyle="italic" />
 
     <androidx.cardview.widget.CardView
         android:layout_width="374dp"
-        android:layout_height="449dp"
+        android:layout_height="500dp"
         android:layout_gravity="center"
         android:layout_marginTop="60dp"
         android:background="#F44336"

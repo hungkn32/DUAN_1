@@ -16,18 +16,18 @@ public class giayDao {
     SQLiteDatabase database;
     DBHelper dbHelper;
 
-    public void giayDao(Context context) {
+    public  giayDao(Context context) {
         dbHelper = new DBHelper(context);
     }
 
-    private ArrayList<giay> getAll() {
+    public ArrayList<giay> getAll() {
         ArrayList list = new ArrayList();
         database = dbHelper.getReadableDatabase();
         Cursor cursor = database.rawQuery("Select* from GIAY", null);
         if (cursor.getCount() != 0) {
             cursor.moveToFirst();
             do {
-                list.add(new giay(cursor.getString(0),cursor.getString(1), cursor.getInt(2), cursor.getString(2)));
+                list.add(new giay(cursor.getInt(0),cursor.getString(1),cursor.getString(2),cursor.getInt(3),cursor.getInt(4)));
             } while (cursor.moveToNext());
         }
         return list;
