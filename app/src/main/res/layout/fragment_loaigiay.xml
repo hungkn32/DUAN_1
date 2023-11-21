@@ -10,7 +10,7 @@
 
     </androidx.recyclerview.widget.RecyclerView>
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fltaddtl"
+        android:id="@+id/flt_add_loaigiay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
