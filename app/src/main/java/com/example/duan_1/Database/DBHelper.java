@@ -8,7 +8,7 @@ import androidx.annotation.Nullable;
 
 public class DBHelper extends SQLiteOpenHelper {
     public static final String dbname = "QLSHOES";
-    public static final int dbvesion = 8;
+    public static final int dbvesion =11;
 
     public DBHelper(Context context) {
 
@@ -19,10 +19,19 @@ public class DBHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String tb_Admin = "Create table ADMIN(maadmin integer primary key , tenDangNhap text,matkhau text,loaitk integer)";
         db.execSQL(tb_Admin);
-        String tb_giay = "CREATE TABLE GIAY (maGiay INTEGER PRIMARY KEY AUTOINCREMENT, tenGiay TEXT, loaiGiay TEXT, giaTien INTEGER, avatagiay TEXT)";
+        String tb_giay = "CREATE TABLE GIAY (maGiay INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                "tenGiay TEXT NOT NULL, " +
+                "loaiGiay TEXT NOT NULL, " +
+                "giaTien INTEGER NOT NULL, " +
+                "avatagiay TEXT NOT NULL)";
         db.execSQL(tb_giay);
 
-        String tb_khachhang = "Create table KHACHHANG(maKH integer primary key autoincrement,tenKH text,namSinh text,sdt text ,diaChi text)";
+        String tb_khachhang = "Create table KHACHHANG(maKH integer primary key autoincrement," +
+                "tenKH text NOT NULL," +
+                "namSinh text NOT NULL," +
+                "sdt text NOT NULL," +
+                "diaChi text NOT NULL," +
+                "urlkhachhang text NOT NULL)";
         db.execSQL(tb_khachhang);
         String tb_dathang = "Create table DATHANG(maDH integer primary key autoincrement,tenKH text,diaChi tex,tenGiay text,loaiGiay text,giaTien integer,ngayMua date,trangThai integer)";
         db.execSQL(tb_dathang);
@@ -33,21 +42,6 @@ public class DBHelper extends SQLiteOpenHelper {
 
         // Ví dụ về cách chèn dữ liệu mẫu vào bảng "GIAY"
 
-        String img1 = "/path/to/your/img_21.png";
-        String img2 = "/path/to/your/img_22.png";
-        String img3 = "/path/to/your/img_23.png";
-
-        db.execSQL( "INSERT INTO GIAY VALUES " +
-                "(1,'Giày Sneaker A', 'Sneaker', 100, '" + img1 + "')," +
-                "(2,'Giày Formal B', 'Formal', 150, '" + img2 + "')," +
-                "(3,'Giày Sport C', 'Sport', 80, '" + img3 + "')");
-
-
-
-        db.execSQL("Insert into KHACHHANG values(0,'ThànhLQ','2003',02928222,'Bắc Giang')," +
-                "(1,'HưngKN','2004',098228722,'Hà Nội')," +
-                "(2,'GiangTV','2004',09872262,'HÀ Nội')");
-        db.execSQL("Insert into DATHANG values(1234,'HiếuNv','Thôn Muồng Xã Tản Viên','Adidas 101for','Adidas','98333','19/11/2023',1)");
 
 
 

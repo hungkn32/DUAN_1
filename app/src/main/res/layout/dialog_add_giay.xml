@@ -7,9 +7,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        android:hint="mã giaỳ"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
+        android:hint="Thêm Giày"
+       android:gravity="center"
+        android:textStyle="bold"
+        android:textSize="30dp"
         android:id="@+id/txtmagiay"
         />
 
@@ -37,14 +38,15 @@
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
         android:layout_marginTop="5dp"/>
+
     <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:id="@+id/edtavatagiay"
-        android:hint="Nhập url ảnh"
+        android:layout_width="2200dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
         android:layout_marginEnd="10dp"
-        android:layout_marginTop="5dp"/>
+        android:hint="Nhập url ảnh" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -6,16 +6,18 @@ public class khachhang {
     private String namsinh;
     private int sdt;
     private String diachi;
+    private String urlkh;
 
     public khachhang() {
     }
 
-    public khachhang(int makh, String tenkh, String namsinh, int sdt, String diachi) {
+    public khachhang(int makh, String tenkh, String namsinh, int sdt, String diachi,String urlkh) {
         this.makh = makh;
         this.tenkh = tenkh;
         this.namsinh = namsinh;
         this.sdt = sdt;
         this.diachi = diachi;
+        this.urlkh = urlkh;
     }
 
     public int getMakh() {
@@ -56,5 +58,13 @@ public class khachhang {
 
     public void setDiachi(String diachi) {
         this.diachi = diachi;
+    }
+
+    public void setUrlkh(String urlkh) {
+        this.urlkh = urlkh;
+    }
+
+    public String getUrlkh() {
+        return urlkh;
     }
 }

@@ -6,13 +6,11 @@ public class giay {
     private String loaiGiay;
     private int giaTien;
 
-    private int avataanh;
+    private String avataanh;
 
 
-    public giay() {
-    }
 
-    public giay(int magiay, String tenGiay, String loaiGiay, int giaTien, int avataanh) {
+    public giay(int magiay, String tenGiay, String loaiGiay, int giaTien,String avataanh) {
         this.magiay = magiay;
         this.tenGiay = tenGiay;
         this.loaiGiay = loaiGiay;
@@ -52,11 +50,11 @@ public class giay {
         this.giaTien = giaTien;
     }
 
-    public int getAvataanh() {
+    public String getAvataanh() {
         return avataanh;
     }
 
-    public void setAvataanh(int avataanh) {
+    public void setAvataanh(String avataanh) {
         this.avataanh = avataanh;
     }
 }

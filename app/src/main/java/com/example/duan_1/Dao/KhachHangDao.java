@@ -22,7 +22,7 @@ public class KhachHangDao {
         if (cursor.getCount() != 0) {
             cursor.moveToFirst();
             do {
-             list.add(new khachhang(cursor.getInt(0),cursor.getString(1),cursor.getString(2),cursor.getInt(3),cursor.getString(4)));
+             list.add(new khachhang(cursor.getInt(0),cursor.getString(1),cursor.getString(2),cursor.getInt(3),cursor.getString(4),cursor.getString(5)));
             } while (cursor.moveToNext());
         }
         return list;

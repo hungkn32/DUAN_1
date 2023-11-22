@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.duan_1.Dao.KhachHangDao;
 import com.example.duan_1.Model.khachhang;
 import com.example.duan_1.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -42,6 +43,7 @@ public class KhachHangAdapter extends RecyclerView.Adapter<KhachHangAdapter.View
         holder.txtnamsinh.setText(kh.getNamsinh());
         holder.txtsdt.setText(String.valueOf(kh.getSdt()));
         holder.txtdiachi.setText(kh.getDiachi());
+        Picasso.get().load(kh.getUrlkh()).into(holder.imgkh);
 
     }
 
@@ -55,6 +57,7 @@ public class KhachHangAdapter extends RecyclerView.Adapter<KhachHangAdapter.View
 
     public class ViewHoler extends RecyclerView.ViewHolder{
         TextView txtmakh,txttenkh,txtnamsinh,txtsdt,txtdiachi;
+        ImageView imgkh;
 
         public ViewHoler(@NonNull View itemView) {
             super(itemView);
@@ -63,6 +66,7 @@ public class KhachHangAdapter extends RecyclerView.Adapter<KhachHangAdapter.View
             txtnamsinh = itemView.findViewById(R.id.txtngaysinhkh1);
             txtsdt = itemView.findViewById(R.id.txtsdt1);
             txtdiachi = itemView.findViewById(R.id.txtdiachi1);
+            imgkh =itemView.findViewById(R.id.imgkh);
         }
     }
 }

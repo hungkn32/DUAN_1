@@ -32,12 +32,19 @@ public class KhachHangFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_khachhang,container,false);
         rcvkh = view.findViewById(R.id.rcvkhachhang);
+        fltadd = view.findViewById(R.id.flt_add_khachhang);
         khdao = new KhachHangDao(getContext());
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         rcvkh.setLayoutManager(layoutManager);
         list = khdao.getall();
         khadapter = new KhachHangAdapter(list,getContext());
         rcvkh.setAdapter(khadapter);
+        fltadd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
         return view;
     }
 }
