@@ -1,5 +1,6 @@
 package com.example.duan_1.Adapter;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -24,7 +25,6 @@ import com.example.duan_1.Model.giay;
 import com.example.duan_1.R;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
-import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
 import java.lang.reflect.Array;
@@ -49,6 +49,7 @@ public class GiayAdapter extends RecyclerView.Adapter<GiayAdapter.ViewHoler> {
         return new ViewHoler(view);
     }
 
+    @SuppressLint("RecyclerView")
     @Override
     public void onBindViewHolder(@NonNull ViewHoler holder, int position) {
         giay g = list.get(position);
@@ -121,7 +122,6 @@ public class GiayAdapter extends RecyclerView.Adapter<GiayAdapter.ViewHoler> {
         ed_txtten.setText(g.getTenGiay());
         ed_txtloai.setText(g.getLoaiGiay());
         ed_txtgia.setText(String.valueOf(g.getGiaTien()));
-        imgavata.setImageResource(Integer.parseInt(g.getAvataanh()));
             btnupdategiay.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

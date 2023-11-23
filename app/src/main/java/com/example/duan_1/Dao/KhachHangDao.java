@@ -1,5 +1,6 @@
 package com.example.duan_1.Dao;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -26,5 +27,21 @@ public class KhachHangDao {
             } while (cursor.moveToNext());
         }
         return list;
+    }
+
+    public boolean insert(String ten,String naamsinh,int sdt ,String diachi,  String urlavata) {
+       SQLiteDatabase database = dbHelper.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("tenKH",ten);
+        values.put("namSinh", naamsinh);
+        values.put("sdt", sdt);
+        values.put("diaChi", diachi);
+        values.put("urlkhachhang", urlavata);
+        long check = database.insert("KHACHHANG",null,values);
+        if(check == -1){
+            return false;
+        }else{
+            return true;
+        }
     }
 }
