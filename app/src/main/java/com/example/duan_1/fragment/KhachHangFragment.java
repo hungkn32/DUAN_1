@@ -62,11 +62,11 @@ public class KhachHangFragment extends Fragment {
         Dialog dialog = builder.create();
         dialog.show();
 
-        TextInputEditText tenkh = view.findViewById(R.id.edt_tenkh);
-        TextInputEditText namsinh = view.findViewById(R.id.edt_tenkh);
-        TextInputEditText sdt = view.findViewById(R.id.edt_tenkh);
-        TextInputEditText diachi = view.findViewById(R.id.edt_tenkh);
-        TextInputEditText url = view.findViewById(R.id.edt_tenkh);
+        TextInputEditText tenkh = view.findViewById(R.id.edt_addtenkh);
+        TextInputEditText namsinh = view.findViewById(R.id.ed_addnamsinh);
+        TextInputEditText sdt = view.findViewById(R.id.ed_addsdt);
+        TextInputEditText diachi = view.findViewById(R.id.ed_adddiachi);
+        TextInputEditText url = view.findViewById(R.id.ed_add_urlkh);
         Button btnaddkh =view.findViewById(R.id.kh_add);
         Button btnhuy  = view.findViewById(R.id.kh_Cancel);
 

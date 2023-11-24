@@ -8,7 +8,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Thêm Khách Hàng"
+        android:text="Update Khách Hàng"
         android:textSize="30dp"
         android:textStyle="bold"/>
 
@@ -17,12 +17,12 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_marginHorizontal="10dp"
-        android:id="@+id/in_edt_tenkh">
+        android:id="@+id/in_updatemakh">
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Nhập Tên Khách Hàng"
-            android:id="@+id/edt_tenkh"/>
+            android:hint="Nhập Mã Khách Hàng"
+            android:id="@+id/ed_updatemakh"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -30,66 +30,85 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_marginHorizontal="10dp"
-        android:id="@+id/in_namsinh">
+        android:id="@+id/in_updatetenkh">
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nhập tên Khách Hàng"
+            android:id="@+id/ed_updatetenkh"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="10dp"
+        android:id="@+id/in_updatenamsinh">
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Nhập Năm Sinh"
-            android:id="@+id/ed_addnamsinh"/>
+            android:id="@+id/ed_updatenamsinh"/>
     </com.google.android.material.textfield.TextInputLayout>
-
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_marginHorizontal="10dp"
-        android:id="@+id/in_sdt">
+        android:id="@+id/in_updatesdt">
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Nhập Số Điện Thoại"
-            android:id="@+id/ed_addsdt"/>
+            android:id="@+id/ed_updatesdt"/>
     </com.google.android.material.textfield.TextInputLayout>
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_marginHorizontal="10dp"
-        android:id="@+id/in_diachi">
+        android:id="@+id/in_updatediachi">
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Nhập Địa Chỉ"
-            android:id="@+id/ed_adddiachi"/>
+            android:id="@+id/ed_updatediachi"/>
     </com.google.android.material.textfield.TextInputLayout>
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:layout_marginHorizontal="10dp"
-        android:id="@+id/in_add_urlkh">
+        android:id="@+id/in_updateurlkh">
         <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="2000dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Nhập url khách hàng"
-            android:id="@+id/ed_add_urlkh"/>
+            android:hint="Nhập url Khách Hàng"
+            android:id="@+id/ed_updateurlkh"/>
     </com.google.android.material.textfield.TextInputLayout>
+    <ImageView
+        android:id="@+id/updateavata"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:scaleType="centerCrop"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/img_10"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
         android:gravity="center"
         android:orientation="horizontal">
         <Button
             android:layout_width="170dp"
             android:layout_height="wrap_content"
-            android:text="ADD"
+            android:text="Update"
             android:textStyle="bold"
             android:layout_marginRight="10dp"
             android:backgroundTint="#C0CA33"
             android:textSize="17dp"
-            android:id="@+id/kh_add"/>
+            android:id="@+id/kh_Update"/>
         <Button
             android:layout_width="170dp"
             android:layout_height="wrap_content"
