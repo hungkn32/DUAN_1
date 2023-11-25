@@ -149,6 +149,7 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginLeft="150dp"
+                android:id="@+id/kh_delte"
                 android:backgroundTint="@color/common_google_signin_btn_text_dark_default"
                 android:src="@drawable/baseline_delete_24" />
         </LinearLayout>

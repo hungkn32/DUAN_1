@@ -26,10 +26,12 @@
         <FrameLayout
             android:id="@+id/framelayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent" />
 
 
     </LinearLayout>
+
+
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/navlayout"
         android:layout_width="wrap_content"
@@ -37,8 +39,6 @@
         android:layout_gravity="start"
         app:headerLayout="@layout/item_header"
         app:menu="@menu/menu" />
-
-
 
 
 </androidx.drawerlayout.widget.DrawerLayout>
