@@ -20,11 +20,12 @@ public class Login extends AppCompatActivity {
     TextInputLayout in_user, in_pass;
     Button btnlogin;
     CheckBox chkSave;
-    private dangnhapDao dao;
+     dangnhapDao dao;
     TextView txtdangki;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTitle("Đăng nhập");
         setContentView(R.layout.activity_login);
         ed_txtuser = findViewById(R.id.ed_txtUser);
         ed_txtpass = findViewById(R.id.ed_txtPass);
@@ -33,6 +34,7 @@ public class Login extends AppCompatActivity {
         btnlogin = findViewById(R.id.btnlogin);
         chkSave = findViewById(R.id.chksave);
         txtdangki = findViewById(R.id.txtdk);
+        dao = new dangnhapDao(this);
         txtdangki.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -41,24 +43,14 @@ public class Login extends AppCompatActivity {
             }
         });
         SharedPreferences pref = getSharedPreferences("User_File",MODE_PRIVATE);
-        ed_txtuser.setText(pref.getString("tenDangNhap",""));
-        ed_txtpass.setText(pref.getString("matkhau",""));
-        chkSave.setChecked(pref.getBoolean("Remember",false));
+        ed_txtuser.setText(pref.getString("USERNAME",""));
+        ed_txtpass.setText(pref.getString("PASSWORD",""));
+        chkSave.setChecked(pref.getBoolean("REMEMBER",false));
 
-        dao = new dangnhapDao(this);
         btnlogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String user = ed_txtuser.getText().toString();
-                String pass = ed_txtpass.getText().toString();
-                boolean check = dao.checklogin(user,pass);
-                if (check){
-                    Toast.makeText(Login.this,"Đăng Nhập thành Công ",Toast.LENGTH_SHORT).show();
-                    rememberUser(user,pass,chkSave.isChecked());
-                    startActivity(new Intent(Login.this, MainActivity.class));
-                }else {
-                    Toast.makeText(Login.this,"Đăng Nhập Thất Bại Mời  Bạn Nhập lại!",Toast.LENGTH_SHORT).show();
-                }
+                    checklogin();
 
             }
         });
@@ -72,13 +64,31 @@ public class Login extends AppCompatActivity {
             edit.clear();
         }else{
             //lưu dữ liệu
-            edit.putString("tenDangNhap",u);
-            edit.putString("matkhau",p);
-            edit.putBoolean("Remember",status);
+            edit.putString("USERNAME",u);
+            edit.putString("PASSWORD",p);
+            edit.putBoolean("REMEMBER",status);
         }
         //lưu lại toàn bộ
         edit.commit();
     }
 
+    private void checklogin(){
+       String user = ed_txtuser.getText().toString();
+        String pass = ed_txtpass.getText().toString();
+        if (user.trim().isEmpty() ||pass.trim().isEmpty()){
+            Toast.makeText(this, "Tên đăng nhập hoặc mật khẩu không được bỏ trống", Toast.LENGTH_SHORT).show();
+        }else {
+                if (dao.checkLogin(user,pass)>0){
+                    Toast.makeText(getApplicationContext(), "Login thành công", Toast.LENGTH_SHORT).show();
+                    rememberUser(user, pass, chkSave.isChecked());
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    intent.putExtra("user", user);
+                    startActivity(intent);
+                    finish();
+                }else {
+                    Toast.makeText(this, "Tên đăng nhập hoặc mật khẩu không đúng", Toast.LENGTH_SHORT).show();
+                }
+        }
+    }
 
 }

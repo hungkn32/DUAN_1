@@ -1,27 +1,26 @@
 package com.example.duan_1.Model;
 
 public class admin {
-    private int maadmin;
+    private String madn;
     private String tendangnhap;
     private String matkhau;
-     private int role;
+
 
     public admin() {
     }
 
-    public admin(int maadmin, String tendangnhap, String matkhau, int role) {
-        this.maadmin = maadmin;
+    public admin(String madn, String tendangnhap, String matkhau) {
+        this.madn = madn;
         this.tendangnhap = tendangnhap;
         this.matkhau = matkhau;
-        this.role = role;
     }
 
-    public int getMaadmin() {
-        return maadmin;
+    public String getMadn() {
+        return madn;
     }
 
-    public void setMaadmin(int maadmin) {
-        this.maadmin = maadmin;
+    public void setMadn(String madn) {
+        this.madn = madn;
     }
 
     public String getTendangnhap() {
@@ -38,13 +37,5 @@ public class admin {
 
     public void setMatkhau(String matkhau) {
         this.matkhau = matkhau;
-    }
-
-    public int getRole() {
-        return role;
-    }
-
-    public void setRole(int role) {
-        this.role = role;
     }
 }

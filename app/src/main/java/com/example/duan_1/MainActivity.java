@@ -19,6 +19,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.duan_1.Dao.dangnhapDao;
+import com.example.duan_1.Model.admin;
 import com.example.duan_1.fragment.ChangePassFragment;
 import com.example.duan_1.fragment.DoanhThuFragment;
 import com.example.duan_1.fragment.GiayFragment;
@@ -30,12 +32,13 @@ import com.example.duan_1.fragment.TrangChuFragment;
 import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity {
-    private DrawerLayout drawerLayout;
-    private Toolbar toolbar;
-    private NavigationView navigationView;
+    DrawerLayout drawerLayout;
+     Toolbar toolbar;
+     NavigationView navigationView;
     Context context = this;
     TextView tvUser;
     View mHeaderView;
+    dangnhapDao dao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,22 +52,23 @@ public class MainActivity extends AppCompatActivity {
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open, R.string.close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
+        navigationView.setItemIconTintList(null);
 
 
-//        mHeaderView = navigationView.getHeaderView(0);
-//        tvUser = mHeaderView.findViewById(R.id.txt_HeaderTextView);
-//        Intent i = getIntent();
-//        String user = i.getStringExtra("user");
-//        dangnhapDao dao = new dangnhapDao(this);
-////         dao = dangnhapDao.getID(user);
-////        String username = thuThu.getHoTen();
-////        tvUser.setText("Welcome " + username + "!");
-//
-//        // admin co quyen add user
-//        if (user.equalsIgnoreCase("nhanvien,khachhang")) {
-//            navigationView.getMenu().findItem(R.id.menu_tk_top10).setVisible(false);
-//            navigationView.getMenu().findItem(R.id.menu_tk_DoanhThu).setVisible(false);
-//        }
+        mHeaderView = navigationView.getHeaderView(0);
+        tvUser = mHeaderView.findViewById(R.id.txt_HeaderTextView);
+        Intent i = getIntent();
+        String user = i.getStringExtra("user");
+         dao = new dangnhapDao(this);
+         admin dndao = dao.getID(user);
+        String username = dndao.getMadn();
+        tvUser.setText("Welcome " + username + "!");
+
+        // admin co quyen add user
+        if (user.equalsIgnoreCase("admin" )) {
+            navigationView.getMenu().findItem(R.id.menu_tk_top10).setVisible(true);
+            navigationView.getMenu().findItem(R.id.menu_tk_DoanhThu).setVisible(true);
+        }
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -119,13 +123,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         //hienthichucnang
-//        SharedPreferences sharedPreferences = getSharedPreferences("User-File",MODE_PRIVATE);
-//        String loaitk = sharedPreferences.getString("tenDangNhap","");
-//        if (!loaitk.equals("admin")){
-//            Menu menu = navigationView.getMenu();
-//            menu.findItem(R.id.menu_tk_DoanhThu).setVisible(false);
-//            menu.findItem(R.id.menu_tk_top10).setVisible(false);
-//        }
+        SharedPreferences sharedPreferences = getSharedPreferences("User-File",MODE_PRIVATE);
+        String loaitk = sharedPreferences.getString("madn","");
+        if (loaitk.equalsIgnoreCase("admin")){
+            Menu menu = navigationView.getMenu();
+            menu.findItem(R.id.menu_tk_DoanhThu).setVisible(true);
+            menu.findItem(R.id.menu_tk_top10).setVisible(true);
+        }
 
 
     }

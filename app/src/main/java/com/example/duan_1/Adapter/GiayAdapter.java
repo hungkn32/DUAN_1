@@ -1,6 +1,5 @@
 package com.example.duan_1.Adapter;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -51,7 +50,7 @@ public class GiayAdapter extends RecyclerView.Adapter<GiayAdapter.ViewHoler> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHoler holder, @SuppressLint("RecyclerView") int position) {
+    public void onBindViewHolder(@NonNull ViewHoler holder, int position) {
         giay g = list.get(position);
         holder.txtmagiay.setText(String.valueOf("Mã Giày: " + g.getMagiay()));
         holder.txttengiay.setText("Tên Giày: " + g.getTenGiay());
@@ -114,13 +113,13 @@ public class GiayAdapter extends RecyclerView.Adapter<GiayAdapter.ViewHoler> {
         TextInputEditText ed_txtloai = view.findViewById(R.id.ed_updateloaigiay);
         TextInputEditText ed_txtgia = view.findViewById(R.id.ed_updategiatien);
         TextInputEditText ed_txurl = view.findViewById(R.id.ed_updateurl);
+
         Button btnupdategiay = view.findViewById(R.id.giay_Update);
         Button btnhuy  =view.findViewById(R.id.giay_Cancel);
         ed_txtma.setText(String.valueOf(g.getMagiay()));
         ed_txtten.setText(g.getTenGiay());
         ed_txtloai.setText(g.getLoaiGiay());
         ed_txtgia.setText(String.valueOf(g.getGiaTien()));
-        ed_txurl.setText(g.getAvataanh());
             btnupdategiay.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -131,7 +130,9 @@ public class GiayAdapter extends RecyclerView.Adapter<GiayAdapter.ViewHoler> {
                         String  url =ed_txurl.getText().toString();
                         boolean check  =dao.update(ma,ten,loaigiay,giatien,url);
                         if (check){
-                           loadData();
+                            list.clear();
+                            list = dao.getAll();
+                            notifyDataSetChanged();
                             Toast.makeText(context, "Cập nhật Giày thành công", Toast.LENGTH_SHORT).show();
                             dialog.dismiss();
                         }else {
@@ -149,11 +150,6 @@ public class GiayAdapter extends RecyclerView.Adapter<GiayAdapter.ViewHoler> {
                 ed_txtten.setText("");
             }
         });
-    }
-    private void loadData(){
-        list.clear();
-        list = dao.getAll();
-        notifyDataSetChanged();
     }
 
 

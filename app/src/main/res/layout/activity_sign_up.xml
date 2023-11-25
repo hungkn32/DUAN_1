@@ -25,7 +25,7 @@
         />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/in_password"
+        android:id="@+id/in_user"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="10dp"
@@ -33,10 +33,25 @@
         android:paddingHorizontal="10dp">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/ed_txtuser"
+            android:id="@+id/ed_user"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Tên Đăng Nhập"
+            android:textSize="18dp" />
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/in_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="30dp"
+        android:paddingHorizontal="10dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/ed_txtname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Họ Tên"
             android:textSize="18dp" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -69,26 +84,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="REF-PASSWORD"
-            android:textSize="18dp" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-
-
-
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/in_sdt"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="10dp"
-        android:layout_marginTop="30dp"
-        android:paddingHorizontal="10dp">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/ed_txtltk"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Loại Tài Khoản"
             android:textSize="18dp" />
     </com.google.android.material.textfield.TextInputLayout>
 

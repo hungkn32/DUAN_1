@@ -52,42 +52,42 @@ public class KhachHangAdapter extends RecyclerView.Adapter<KhachHangAdapter.View
         holder.txtsdt.setText(String.valueOf(kh.getSdt()));
         holder.txtdiachi.setText(kh.getDiachi());
         Picasso.get().load(kh.getUrlkh()).into(holder.imgkh);
-        holder.delete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(context);
-                builder.setTitle("Delete");
-                builder.setMessage("Bạn thật sự muốn xóa Khách Hàng này!!");
-                builder.setPositiveButton("Xóa", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        dao  = new KhachHangDao(context);
-                        int check = dao.delete(kh.getMakh());
-                        switch (check) {
-                            case 1:
-                                list.clear();
-                                list = dao.getall();
-                                notifyDataSetChanged();
-                                Toast.makeText(context, "Xóa thành viên thành công", Toast.LENGTH_SHORT).show();
-                                break;
-                            case 0:
-                                Toast.makeText(context, "Xóa thành viên thất bại", Toast.LENGTH_SHORT).show();
-                                break;
-                            case -1:
-                                Toast.makeText(context, "Thành viên đang tồn tại phiếu mượn, hiện tại không thể xóa", Toast.LENGTH_SHORT).show();
-                                break;
-                            default:
-                                break;
-                        }
-                    }
-                });
-                notifyDataSetChanged();
-                builder.setNegativeButton("Hủy", null);
-                builder.create().show();
-
-
-            }
-        });
+//        holder.delete.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+//                builder.setTitle("Delete");
+//                builder.setMessage("Bạn thật sự muốn xóa Khách Hàng này!!");
+//                builder.setPositiveButton("Xóa", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialogInterface, int i) {
+//                        dao  = new KhachHangDao(context);
+//                        int check = dao.delete(kh.getMakh());
+//                        switch (check) {
+//                            case 1:
+//                                list.clear();
+//                                list = dao.getall();
+//                                notifyDataSetChanged();
+//                                Toast.makeText(context, "Xóa thành viên thành công", Toast.LENGTH_SHORT).show();
+//                                break;
+//                            case 0:
+//                                Toast.makeText(context, "Xóa thành viên thất bại", Toast.LENGTH_SHORT).show();
+//                                break;
+//                            case -1:
+//                                Toast.makeText(context, "Thành viên đang tồn tại phiếu mượn, hiện tại không thể xóa", Toast.LENGTH_SHORT).show();
+//                                break;
+//                            default:
+//                                break;
+//                        }
+//                    }
+//                });
+//                notifyDataSetChanged();
+//                builder.setNegativeButton("Hủy", null);
+//                builder.create().show();
+//
+//
+//            }
+//        });
         holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {

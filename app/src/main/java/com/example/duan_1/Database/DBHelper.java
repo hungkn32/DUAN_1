@@ -8,7 +8,7 @@ import androidx.annotation.Nullable;
 
 public class DBHelper extends SQLiteOpenHelper {
     public static final String dbname = "QLSHOES";
-    public static final int dbvesion =11;
+    public static final int dbvesion =14;
 
     public DBHelper(Context context) {
 
@@ -17,7 +17,9 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String tb_Admin = "Create table ADMIN(maadmin integer primary key , tenDangNhap text,matkhau text,loaitk integer)";
+        String tb_Admin = "Create table ADMIN(madn text primary key , " +
+                "tenDangNhap text," +
+                "matkhau text)";
         db.execSQL(tb_Admin);
         String tb_giay = "CREATE TABLE GIAY (maGiay INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "tenGiay TEXT NOT NULL, " +
@@ -36,9 +38,9 @@ public class DBHelper extends SQLiteOpenHelper {
         String tb_dathang = "Create table DATHANG(maDH integer primary key autoincrement,tenKH text,diaChi tex,tenGiay text,loaiGiay text,giaTien integer,ngayMua date,trangThai integer)";
         db.execSQL(tb_dathang);
 
-        db.execSQL("Insert into ADMIN values(0,'admin','admin123',1)," +
-                "(1,'nhanvien','nhanvien123',2)," +
-                "(2,'khachhang','khachhang123',3)");
+        db.execSQL("Insert into ADMIN values('admin','admin','admin123')," +
+                "('nhanvien','nhanvien','nhanvien123')");
+
 
         // Ví dụ về cách chèn dữ liệu mẫu vào bảng "GIAY"
 
