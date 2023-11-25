@@ -95,7 +95,6 @@ public class GiayFragment extends Fragment {
                     edtgiatien.setText("");
                 }
             });
-
     }
     public void updatedata(){
         ArrayList<giay> newlist=new ArrayList<>();

@@ -76,7 +76,7 @@ public class TrangChuFragment extends Fragment {
         listphoto.add(new photo(R.drawable.img_12));
         listphoto.add(new photo(R.drawable.img_13));
         listphoto.add(new photo(R.drawable.img_14));
-        listphoto.add(new photo(R.drawable.img_15));
+        listphoto.add(new photo(R.drawable.img_15)); 
         return listphoto;
     }
 
