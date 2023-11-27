@@ -32,11 +32,11 @@ public class KhachHangDao {
     public boolean insert(String tenkh,String namsinh,int sdt,String diachi,String urlavata) {
         database = dbHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put("tenKh",tenkh);
-        values.put("namSinh", namsinh);
+        values.put("tenkh",tenkh);
+        values.put("namsinh", namsinh);
         values.put("sdt", sdt);
-        values.put("diaChi",diachi);
-        values.put("avatagiay", urlavata);
+        values.put("dichi",diachi);
+        values.put("urlkh", urlavata);
         long check = database.insert("KHACHHANG",null,values);
         if(check == -1){
             return false;
@@ -47,12 +47,12 @@ public class KhachHangDao {
 
     public int delete(int makh){
         database = dbHelper.getWritableDatabase();
-        Cursor cursor = database.rawQuery("select * from KHACHHANG where maKh = ?", new String[]{String.valueOf(makh)});
+        Cursor cursor = database.rawQuery("select * from KHACHHANG where maKH = ?", new String[]{String.valueOf(makh)});
         if (cursor.getCount() != 0) {
             return -1;
         }
 
-        long check = database.delete("KHACHHANG", "maKh = ?", new String[]{String.valueOf(makh)});
+        long check = database.delete("KHACHHANG", "maKH = ?", new String[]{String.valueOf(makh)});
         if (check == -1) {
             return 0;
         } else {
@@ -67,7 +67,7 @@ public class KhachHangDao {
         values.put("sdt", sdt);
         values.put("diaChi",diachi);
         values.put("avatagiay", url);
-        long check = db.update("KHACHHANG",values,"maKh = ?",new String[]{String.valueOf(ma)});
+        long check = db.update("KHACHHANG",values,"maKH = ?",new String[]{String.valueOf(ma)});
         if(check == -1){
             return false;
         }else{
