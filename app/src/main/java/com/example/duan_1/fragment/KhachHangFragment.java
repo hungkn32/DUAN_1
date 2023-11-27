@@ -92,21 +92,15 @@ public class KhachHangFragment extends Fragment {
         btnhuy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                edttenkh.setText("");
-                edtnamsinh.setText("");
-                edtsdt.setText("");
-                edtdiachi.setText("");
-                edtavatar.setText("");
-
+              dialog.dismiss();
             }
         });
     }
 
     public void updatedata() {
-        ArrayList<khachhang> List = new ArrayList<>();
-        list.clear();
-        list.addAll(List);
-        khadapter.notifyDataSetChanged();
+        list = (ArrayList<khachhang>) khdao.getall();
+        khadapter = new KhachHangAdapter(list, getContext());
+        rcvkh.setAdapter(khadapter);
 
     }
 }

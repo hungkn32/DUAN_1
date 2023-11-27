@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.duan_1.Adapter.GiayAdapter;
 import com.example.duan_1.Dao.giayDao;
 import com.example.duan_1.Model.giay;
+import com.example.duan_1.Model.khachhang;
 import com.example.duan_1.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -89,17 +90,15 @@ public class GiayFragment extends Fragment {
             btnhuy.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    edttengiay.setText("");
-                    edtloaigiay.setText("");
-                    edtavata.setText("");
-                    edtgiatien.setText("");
+                 dialog.dismiss();
                 }
             });
     }
     public void updatedata(){
-        ArrayList<giay> newlist=new ArrayList<>();
-        list.clear();
-        list.addAll(newlist);
-        adapter.notifyDataSetChanged();
+        list = (ArrayList<giay>) dao.getAll();
+        adapter = new GiayAdapter(  list,getContext());
+        rcvgiay.setAdapter(adapter);
+
+
     }
 }

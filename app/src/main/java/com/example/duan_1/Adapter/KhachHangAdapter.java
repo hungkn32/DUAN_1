@@ -8,6 +8,7 @@ import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -20,6 +21,7 @@ import com.example.duan_1.Dao.KhachHangDao;
 import com.example.duan_1.Dao.giayDao;
 import com.example.duan_1.Model.khachhang;
 import com.example.duan_1.R;
+import com.google.android.material.textfield.TextInputEditText;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -52,42 +54,42 @@ public class KhachHangAdapter extends RecyclerView.Adapter<KhachHangAdapter.View
         holder.txtsdt.setText(String.valueOf(kh.getSdt()));
         holder.txtdiachi.setText(kh.getDiachi());
         Picasso.get().load(kh.getUrlkh()).into(holder.imgkh);
-//        holder.delete.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                AlertDialog.Builder builder = new AlertDialog.Builder(context);
-//                builder.setTitle("Delete");
-//                builder.setMessage("Bạn thật sự muốn xóa Khách Hàng này!!");
-//                builder.setPositiveButton("Xóa", new DialogInterface.OnClickListener() {
-//                    @Override
-//                    public void onClick(DialogInterface dialogInterface, int i) {
-//                        dao  = new KhachHangDao(context);
-//                        int check = dao.delete(kh.getMakh());
-//                        switch (check) {
-//                            case 1:
-//                                list.clear();
-//                                list = dao.getall();
-//                                notifyDataSetChanged();
-//                                Toast.makeText(context, "Xóa thành viên thành công", Toast.LENGTH_SHORT).show();
-//                                break;
-//                            case 0:
-//                                Toast.makeText(context, "Xóa thành viên thất bại", Toast.LENGTH_SHORT).show();
-//                                break;
-//                            case -1:
-//                                Toast.makeText(context, "Thành viên đang tồn tại phiếu mượn, hiện tại không thể xóa", Toast.LENGTH_SHORT).show();
-//                                break;
-//                            default:
-//                                break;
-//                        }
-//                    }
-//                });
-//                notifyDataSetChanged();
-//                builder.setNegativeButton("Hủy", null);
-//                builder.create().show();
-//
-//
-//            }
-//        });
+        holder.delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                builder.setTitle("Delete");
+                builder.setMessage("Bạn thật sự muốn xóa Khách Hàng này!!");
+                builder.setPositiveButton("Xóa", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dao  = new KhachHangDao(context);
+                        int check = dao.delete(kh.getMakh());
+                        switch (check) {
+                            case 1:
+                                list.clear();
+                                list = dao.getall();
+                                notifyDataSetChanged();
+                                Toast.makeText(context, "Xóa thành viên thành công", Toast.LENGTH_SHORT).show();
+                                break;
+                            case 0:
+                                Toast.makeText(context, "Xóa thành viên thất bại", Toast.LENGTH_SHORT).show();
+                                break;
+                            case -1:
+                                Toast.makeText(context, "Thành viên đang tồn tại DON HANG, hiện tại không thể xóa", Toast.LENGTH_SHORT).show();
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                });
+                notifyDataSetChanged();
+                builder.setNegativeButton("Hủy", null);
+                builder.create().show();
+
+
+            }
+        });
         holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
@@ -99,10 +101,55 @@ public class KhachHangAdapter extends RecyclerView.Adapter<KhachHangAdapter.View
 private  void dialogupdate(khachhang kh){
     AlertDialog.Builder builder = new AlertDialog.Builder(context);
     LayoutInflater inflater = ((Activity) context).getLayoutInflater();
-    View view = inflater.inflate(R.layout.dialog_update_giay, null);
+    View view = inflater.inflate(R.layout.dialog_update_khachhang, null);
     builder.setView(view);
     Dialog dialog = builder.create();
     dialog.show();
+    TextInputEditText makh = view.findViewById(R.id.ed_updatemakh);
+    TextInputEditText tenkh = view.findViewById(R.id.ed_updatetenkh);
+    TextInputEditText namsinh = view.findViewById(R.id.ed_updatenamsinh);
+    TextInputEditText sdt = view.findViewById(R.id.ed_updatesdt);
+    TextInputEditText diachi = view.findViewById(R.id.ed_updatediachi);
+    TextInputEditText url =view.findViewById(R.id.ed_updateurlkh);
+    Button btnupdate = view.findViewById(R.id.kh_Update);
+    Button btnhuy = view.findViewById(R.id.kh_Cancel);
+
+    makh.setText(String.valueOf(kh.getMakh()));
+    tenkh.setText(kh.getTenkh());
+    namsinh.setText(kh.getNamsinh());
+    sdt.setText(String.valueOf(kh.getSdt()));
+    diachi.setText(kh.getDiachi());
+    url.setText(kh.getUrlkh());
+    btnupdate.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            int ma = Integer.parseInt(makh.getText().toString());
+            String ten = tenkh.getText().toString();
+            String sinh  =namsinh.getText().toString();
+            int so = Integer.parseInt(sdt.getText().toString());
+            String dia = diachi.getText().toString();
+            String avata = url.getText().toString();
+            boolean check = dao.update(ma,ten,sinh,so,dia,avata);
+            if (check){
+                list.clear();
+                list = dao.getall();
+                notifyDataSetChanged();
+                Toast.makeText(context, "Cập nhật Khách Hàng thành công", Toast.LENGTH_SHORT).show();
+                dialog.dismiss();
+            }else {
+                Toast.makeText(context, "Cập nhật Khách Hàng thất bại", Toast.LENGTH_SHORT).show();
+            }
+        }
+    });
+    btnhuy.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            dialog.dismiss();
+        }
+    });
+
+
+
 
 }
     @Override
