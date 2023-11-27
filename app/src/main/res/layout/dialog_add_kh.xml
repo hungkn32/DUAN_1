@@ -35,7 +35,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Nhập Năm Sinh"
-            android:id="@+id/ed_addnamsinh"/>
+            android:id="@+id/edt_addnamsinh"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -48,7 +48,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Nhập Số Điện Thoại"
-            android:id="@+id/ed_addsdt"/>
+            android:id="@+id/edt_addsdt"/>
     </com.google.android.material.textfield.TextInputLayout>
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
@@ -60,7 +60,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Nhập Địa Chỉ"
-            android:id="@+id/ed_adddiachi"/>
+            android:id="@+id/edt_adddiachi"/>
     </com.google.android.material.textfield.TextInputLayout>
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
@@ -72,7 +72,7 @@
             android:layout_width="2000dp"
             android:layout_height="wrap_content"
             android:hint="Nhập url khách hàng"
-            android:id="@+id/ed_add_urlkh"/>
+            android:id="@+id/edt_add_urlkh"/>
     </com.google.android.material.textfield.TextInputLayout>
     <LinearLayout
         android:layout_width="match_parent"
