@@ -2,7 +2,7 @@
     <string name="app_name">DUAN_1</string>
     <string name="open">Open nav</string>
     <string name="close">Close nav</string>
-    <color name="TrangThai">#4CAF50</color>
+    <color name="TrangThai">#8F0836</color>
     <string name="sign_up">Don\'t have an account? <b>Sign up</b></string>
     <string name="gi_25">Giá : 25$</string>
     <string name="th_m_v_o_gi_h_ng">Thêm Vào Giỏ Hàng</string>

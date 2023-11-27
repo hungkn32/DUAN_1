@@ -8,9 +8,10 @@ public class giay {
 
     private String avataanh;
 
+    public giay() {
+    }
 
-
-    public giay(int magiay, String tenGiay, String loaiGiay, int giaTien,String avataanh) {
+    public giay(int magiay, String tenGiay, String loaiGiay, int giaTien, String avataanh) {
         this.magiay = magiay;
         this.tenGiay = tenGiay;
         this.loaiGiay = loaiGiay;

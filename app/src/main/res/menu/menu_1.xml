@@ -4,7 +4,7 @@
         android:id="@+id/search"
         app:showAsAction="always|collapseActionView"
         android:icon="@drawable/baseline_shopping_cart_24"
-        app:actionViewClass="androidx.appcompat.widget.ActionMenuView"
+        app:actionViewClass="androidx.appcompat.widget.SearchView"
         android:title="Giỏ Hàng"
     />
 </menu>

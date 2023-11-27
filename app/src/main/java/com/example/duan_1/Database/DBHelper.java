@@ -8,7 +8,7 @@ import androidx.annotation.Nullable;
 
 public class DBHelper extends SQLiteOpenHelper {
     public static final String dbname = "QLSHOES";
-    public static final int dbvesion =14;
+    public static final int dbvesion =15;
 
     public DBHelper(Context context) {
 
@@ -18,24 +18,31 @@ public class DBHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         String tb_Admin = "Create table ADMIN(madn text primary key , " +
-                "tenDangNhap text," +
-                "matkhau text)";
+                "tenDangNhap TEXT  NOT NULL," +
+                "matkhau TEXT  NOT NULL)";
         db.execSQL(tb_Admin);
         String tb_giay = "CREATE TABLE GIAY (maGiay INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "tenGiay TEXT NOT NULL, " +
                 "loaiGiay TEXT NOT NULL, " +
-                "giaTien INTEGER NOT NULL, " +
+                "giaTien TEXT NOT NULL, " +
                 "avatagiay TEXT NOT NULL)";
         db.execSQL(tb_giay);
 
         String tb_khachhang = "Create table KHACHHANG(maKH integer primary key autoincrement," +
-                "tenKH text NOT NULL," +
-                "namSinh text NOT NULL," +
-                "sdt text NOT NULL," +
-                "diaChi text NOT NULL," +
-                "urlkhachhang text NOT NULL)";
+                "tenKH TEXT  NOT NULL," +
+                "namSinh TEXT  NOT NULL," +
+                "sdt TEXT  NOT NULL," +
+                "diaChi TEXT  NOT NULL," +
+                "urlkhachhang TEXT  NOT NULL)";
         db.execSQL(tb_khachhang);
-        String tb_dathang = "Create table DATHANG(maDH integer primary key autoincrement,tenKH text,diaChi tex,tenGiay text,loaiGiay text,giaTien integer,ngayMua date,trangThai integer)";
+        String tb_dathang = "Create table DATHANG(maDH integer primary key autoincrement," +
+                "tenKH TEXT  REFERENCES KHACHHANG(tenKH) NOT NULL," +
+                "diaChi TEXT    REFERENCES KHACHHANG(diaChi) NOT NULL," +
+                "tenGiay TEXT    REFERENCES GIAY(tenGiay) NOT NULL," +
+                "loaiGiay TEXT    REFERENCES GIAY(loaiGiay) NOT NULL," +
+                "giaTien TEXT   REFERENCES GIAY(giaTien) NOT NULL," +
+                "ngayMua DATE NOT NULL," +
+                "trangThai INTEGER NOT NULL)";
         db.execSQL(tb_dathang);
 
         db.execSQL("Insert into ADMIN values('admin','admin','admin123')," +

@@ -12,13 +12,13 @@ import com.example.duan_1.Model.khachhang;
 import java.util.ArrayList;
 
 public class KhachHangDao {
-    SQLiteDatabase database;
     DBHelper dbHelper;
+    SQLiteDatabase database;
     public KhachHangDao(Context context){
         dbHelper =new DBHelper(context);
     }
     public ArrayList<khachhang> getall(){
-        SQLiteDatabase database =dbHelper.getReadableDatabase();
+        database =dbHelper.getReadableDatabase();
         ArrayList<khachhang> list = new ArrayList<>();
         Cursor cursor = database.rawQuery("SELECT * FROM KHACHHANG",null);
         if (cursor.getCount() != 0) {
@@ -29,14 +29,14 @@ public class KhachHangDao {
         }
         return list;
     }
-    public boolean insert(String tenkh,String namsinh,int sdt,String diachi,String urlavata) {
+    public boolean insert(String ten,String namsinh,int sdt,String diachi,String urlavata){
         database = dbHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put("tenkh",tenkh);
-        values.put("namsinh", namsinh);
-        values.put("sdt", sdt);
-        values.put("dichi",diachi);
-        values.put("urlkh", urlavata);
+        values.put("tenKH",ten);
+        values.put("namSinh",namsinh);
+        values.put("sdt",sdt);
+        values.put("diaChi",diachi);
+        values.put("urlkhachhang",urlavata);
         long check = database.insert("KHACHHANG",null,values);
         if(check == -1){
             return false;
@@ -44,30 +44,15 @@ public class KhachHangDao {
             return true;
         }
     }
-
-    public int delete(int makh){
+    public boolean update(int ma,String ten,String namsinh,int sdt,String diachi,String urlavata){
         database = dbHelper.getWritableDatabase();
-        Cursor cursor = database.rawQuery("select * from KHACHHANG where maKH = ?", new String[]{String.valueOf(makh)});
-        if (cursor.getCount() != 0) {
-            return -1;
-        }
-
-        long check = database.delete("KHACHHANG", "maKH = ?", new String[]{String.valueOf(makh)});
-        if (check == -1) {
-            return 0;
-        } else {
-            return 1;
-        }
-    }
-    public boolean update(int ma,String ten, String namsinh,int sdt,String diachi,String url){
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put("tenKh",ten);
-        values.put("namSinh", namsinh);
-        values.put("sdt", sdt);
+        values.put("tenKH",ten);
+        values.put("namSinh",namsinh);
+        values.put("sdt",sdt);
         values.put("diaChi",diachi);
-        values.put("avatagiay", url);
-        long check = db.update("KHACHHANG",values,"maKH = ?",new String[]{String.valueOf(ma)});
+        values.put("urlkhachhang",urlavata);
+        long check = database.update("KHACHHANG",values,"maKH = ?",new String[]{String.valueOf(ma)});
         if(check == -1){
             return false;
         }else{
