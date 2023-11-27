@@ -1,5 +1,6 @@
 package com.example.duan_1.Dao;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -11,6 +12,7 @@ import com.example.duan_1.Model.khachhang;
 import java.util.ArrayList;
 
 public class KhachHangDao {
+    SQLiteDatabase database;
     DBHelper dbHelper;
     public KhachHangDao(Context context){
         dbHelper =new DBHelper(context);
@@ -26,5 +28,50 @@ public class KhachHangDao {
             } while (cursor.moveToNext());
         }
         return list;
+    }
+    public boolean insert(String tenkh,String namsinh,int sdt,String diachi,String urlavata) {
+        database = dbHelper.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("tenKh",tenkh);
+        values.put("namSinh", namsinh);
+        values.put("sdt", sdt);
+        values.put("diaChi",diachi);
+        values.put("avatagiay", urlavata);
+        long check = database.insert("KHACHHANG",null,values);
+        if(check == -1){
+            return false;
+        }else{
+            return true;
+        }
+    }
+
+    public int delete(int makh){
+        database = dbHelper.getWritableDatabase();
+        Cursor cursor = database.rawQuery("select * from KHACHHANG where maKh = ?", new String[]{String.valueOf(makh)});
+        if (cursor.getCount() != 0) {
+            return -1;
+        }
+
+        long check = database.delete("KHACHHANG", "maKh = ?", new String[]{String.valueOf(makh)});
+        if (check == -1) {
+            return 0;
+        } else {
+            return 1;
+        }
+    }
+    public boolean update(int ma,String ten, String namsinh,int sdt,String diachi,String url){
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("tenKh",ten);
+        values.put("namSinh", namsinh);
+        values.put("sdt", sdt);
+        values.put("diaChi",diachi);
+        values.put("avatagiay", url);
+        long check = db.update("KHACHHANG",values,"maKh = ?",new String[]{String.valueOf(ma)});
+        if(check == -1){
+            return false;
+        }else{
+            return true;
+        }
     }
 }
