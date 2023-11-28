@@ -8,7 +8,7 @@ import androidx.annotation.Nullable;
 
 public class DBHelper extends SQLiteOpenHelper {
     public static final String dbname = "QLSHOES";
-    public static final int dbvesion =15;
+    public static final int dbvesion =16;
 
     public DBHelper(Context context) {
 
@@ -48,8 +48,11 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL("Insert into ADMIN values('admin','admin','admin123')," +
                 "('nhanvien','nhanvien','nhanvien123')");
 
-
+    db.execSQL("INSERT INTO GIAY VALUES(1,'Giày Nike White','Nike','19999','')," +
+            "(2,'Giày Adidas','Adidas','29999','')," +
+            "(3,'Giày Bitis','Bitis','39999','')");
         // Ví dụ về cách chèn dữ liệu mẫu vào bảng "GIAY"
+        db.execSQL("INSERT INTO KHACHHANG VALUES(1,'Hưng','2004','0347980858',)");
 
 
 

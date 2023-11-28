@@ -18,12 +18,16 @@ import androidx.appcompat.widget.ActionMenuView;
 import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
+import com.example.duan_1.Adapter.GiayAdapter;
 import com.example.duan_1.Adapter.photoAdapter;
 import com.example.duan_1.Adapter.useAdapter;
+import com.example.duan_1.Dao.giayDao;
 import com.example.duan_1.Model.User;
+import com.example.duan_1.Model.giay;
 import com.example.duan_1.Model.photo;
 import com.example.duan_1.R;
 
@@ -44,6 +48,7 @@ public class TrangChuFragment extends Fragment {
     private Timer timer;
     private RecyclerView rcv;
     private useAdapter adapter;
+    GiayAdapter giayAdapter;
     private SearchView searchView;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -140,9 +145,14 @@ public class TrangChuFragment extends Fragment {
         }
     }
 
-//    private List<User> getlistuer() {
-//        List<User> list = new ArrayList<>();
-//
-//        return list;
-//    }
-}
+    private ArrayList<giay> getlistuer() {
+        giayDao dao = new giayDao(getContext());
+        ArrayList<giay> list = new ArrayList<>();
+        list = dao.getAll();
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+        rcv.setLayoutManager(layoutManager);
+        giayAdapter = new GiayAdapter(list, getContext());
+        rcv.setAdapter(adapter);
+        return list;
+    }
+    }

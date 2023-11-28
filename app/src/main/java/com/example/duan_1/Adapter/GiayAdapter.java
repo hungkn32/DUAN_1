@@ -1,5 +1,6 @@
 package com.example.duan_1.Adapter;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -50,13 +51,21 @@ public class GiayAdapter extends RecyclerView.Adapter<GiayAdapter.ViewHoler> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHoler holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHoler holder, @SuppressLint("RecyclerView") int position) {
         giay g = list.get(position);
         holder.txtmagiay.setText(String.valueOf("Mã Giày: " + g.getMagiay()));
         holder.txttengiay.setText("Tên Giày: " + g.getTenGiay());
         holder.txtloaigiay.setText("Loại Giày: " + g.getLoaiGiay());
         holder.txtgiatien.setText(String.valueOf("Giá Tiền: " + g.getGiaTien()));
-        Picasso.get().load(g.getAvataanh()).into(holder.img);
+        String imagePath = g.getAvataanh();
+
+        if (imagePath != null && !imagePath.isEmpty()) {
+            // Đường dẫn không rỗng, sử dụng Picasso để tải hình ảnh
+            Picasso.get().load(imagePath).into(holder.img);
+        } else {
+             holder.img.setVisibility(View.GONE);
+        }
+
         holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
