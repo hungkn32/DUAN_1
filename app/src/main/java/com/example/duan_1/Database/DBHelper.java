@@ -8,7 +8,7 @@ import androidx.annotation.Nullable;
 
 public class DBHelper extends SQLiteOpenHelper {
     public static final String dbname = "QLSHOES";
-    public static final int dbvesion =16;
+    public static final int dbvesion =17;
 
     public DBHelper(Context context) {
 
@@ -48,11 +48,11 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL("Insert into ADMIN values('admin','admin','admin123')," +
                 "('nhanvien','nhanvien','nhanvien123')");
 
-    db.execSQL("INSERT INTO GIAY VALUES(1,'Giày Nike White','Nike','19999','')," +
-            "(2,'Giày Adidas','Adidas','29999','')," +
-            "(3,'Giày Bitis','Bitis','39999','')");
+    db.execSQL("INSERT INTO GIAY VALUES(1,'Giày Nike White','Nike','19999','https://shopgiayreplica.com/wp-content/uploads/2018/07/nike-air-force-1-low-replica.jpeg')," +
+            "(2,'Giày Adidas','Adidas','29999','https://product.hstatic.net/200000255805/product/z3744531959920_d9759f17887e00d6899ff0650ba0b8ca_70e805bd5bba4a89b08f7cab50030603_master.jpg')," +
+            "(3,'Giày Bitis','Bitis','39999','https://product.hstatic.net/1000230642/product/-hunter-x-wavy-collection-hsm001400xnh-xanh-nhot-5o654-color-xanh-nhot_1d01269da8544dc7956d1c0c363b2f6b_grande.jpg')");
         // Ví dụ về cách chèn dữ liệu mẫu vào bảng "GIAY"
-        db.execSQL("INSERT INTO KHACHHANG VALUES(1,'Hưng','2004','0347980858',)");
+        db.execSQL("INSERT INTO KHACHHANG VALUES(1,'Hưng','2004','0347980858','Thôn 9 Hà Nội ','https://png.pngtree.com/png-vector/20190623/ourlarge/pngtree-accountavataruser--flat-color-icon--vector-icon-banner-templ-png-image_1491720.jpg')");
 
 
 
