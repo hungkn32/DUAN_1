@@ -42,6 +42,12 @@ public class GiayFragment extends Fragment {
     private SearchView view;
 
     @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+    }
+
+    @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
         inflater.inflate(R.menu.menuseach,menu);
         SearchManager manager = ((SearchManager) getActivity().getSystemService(Context.SEARCH_SERVICE));
