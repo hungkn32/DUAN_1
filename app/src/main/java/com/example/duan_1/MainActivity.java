@@ -58,14 +58,14 @@ public class MainActivity extends AppCompatActivity {
         mHeaderView = navigationView.getHeaderView(0);
         tvUser = mHeaderView.findViewById(R.id.txt_HeaderTextView);
         Intent i = getIntent();
-        String user = i.getStringExtra("user");
+        String user = i.getStringExtra("madn");
          dao = new dangnhapDao(this);
-         admin dndao = dao.getID(user);
-        String username = dndao.getMadn();
-        tvUser.setText("Welcome " + username + "!");
+         admin ad = dao.getID(user);
+        String username = ad.getTendangnhap();
+        tvUser.setText("Welcome " + username +  "!");
 
         // admin co quyen add user
-        if (user.equalsIgnoreCase("admin" )) {
+        if (user.equalsIgnoreCase("admin")|| user.equalsIgnoreCase("nhanvien")) {
             navigationView.getMenu().findItem(R.id.menu_tk_top10).setVisible(true);
             navigationView.getMenu().findItem(R.id.menu_tk_DoanhThu).setVisible(true);
         }
@@ -123,13 +123,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         //hienthichucnang
-        SharedPreferences sharedPreferences = getSharedPreferences("User-File",MODE_PRIVATE);
-        String loaitk = sharedPreferences.getString("madn","");
-        if (loaitk.equalsIgnoreCase("admin")){
-            Menu menu = navigationView.getMenu();
-            menu.findItem(R.id.menu_tk_DoanhThu).setVisible(true);
-            menu.findItem(R.id.menu_tk_top10).setVisible(true);
-        }
+//        SharedPreferences sharedPreferences = getSharedPreferences("User-File",MODE_PRIVATE);
+//        String loaitk = sharedPreferences.getString("madn","");
+//        if (loaitk.equalsIgnoreCase("admin")){
+//            Menu menu = navigationView.getMenu();
+//            menu.findItem(R.id.menu_tk_DoanhThu).setVisible(true);
+//            menu.findItem(R.id.menu_tk_top10).setVisible(true);
+//        }
 
 
     }

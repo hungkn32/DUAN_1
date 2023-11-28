@@ -1,5 +1,6 @@
 package com.example.duan_1.Adapter;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -49,6 +50,7 @@ public class GiayAdapter extends RecyclerView.Adapter<GiayAdapter.ViewHoler> {
         return new ViewHoler(view);
     }
 
+    @SuppressLint("RecyclerView")
     @Override
     public void onBindViewHolder(@NonNull ViewHoler holder, int position) {
         giay g = list.get(position);
@@ -120,6 +122,7 @@ public class GiayAdapter extends RecyclerView.Adapter<GiayAdapter.ViewHoler> {
         ed_txtten.setText(g.getTenGiay());
         ed_txtloai.setText(g.getLoaiGiay());
         ed_txtgia.setText(String.valueOf(g.getGiaTien()));
+        ed_txurl.setText(g.getAvataanh());
             btnupdategiay.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -130,8 +133,6 @@ public class GiayAdapter extends RecyclerView.Adapter<GiayAdapter.ViewHoler> {
                         String  url =ed_txurl.getText().toString();
                         boolean check  =dao.update(ma,ten,loaigiay,giatien,url);
                         if (check){
-                            list.clear();
-                            list = dao.getAll();
                             notifyDataSetChanged();
                             Toast.makeText(context, "Cập nhật Giày thành công", Toast.LENGTH_SHORT).show();
                             dialog.dismiss();
@@ -144,10 +145,7 @@ public class GiayAdapter extends RecyclerView.Adapter<GiayAdapter.ViewHoler> {
         btnhuy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ed_txtma.setText("");
-                ed_txtgia.setText("");
-                ed_txtloai.setText("");
-                ed_txtten.setText("");
+                dialog.dismiss();
             }
         });
     }

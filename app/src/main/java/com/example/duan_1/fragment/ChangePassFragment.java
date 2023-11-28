@@ -18,15 +18,18 @@ import com.example.duan_1.Model.admin;
 import com.example.duan_1.R;
 import com.google.android.material.textfield.TextInputEditText;
 
+import java.util.ArrayList;
+
 public class ChangePassFragment extends Fragment {
     TextInputEditText edPassOld, edPassChange, edRePassChange;
     Button btnSaveUserChange, btnCancleUserChange;
     dangnhapDao dndao;
+    ArrayList<admin> list;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view =LayoutInflater.from(inflater.getContext()).inflate(R.layout.changepass,null);
-        dndao = new dangnhapDao(getActivity());
+        dndao = new dangnhapDao(getContext());
         edPassOld = view.findViewById(R.id.edPassOld);
         edPassChange = view.findViewById(R.id.edPassChange);
         edRePassChange = view.findViewById(R.id.edRePassChange);
@@ -44,14 +47,14 @@ public class ChangePassFragment extends Fragment {
         btnSaveUserChange.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SharedPreferences pref = getActivity().getSharedPreferences("USER_FILE", Context.MODE_PRIVATE);
+                SharedPreferences pref = getContext().getSharedPreferences("User_File", Context.MODE_PRIVATE);
                 String user = pref.getString("USERNAME","");
                 if (validate() > 0) {
                     admin a = dndao.getID(user);
                     a.setMatkhau(edPassChange.getText().toString());
-                    edPassChange.setText(a.getMatkhau());
                     if (dndao.updatePass(a) > 0) {
                         Toast.makeText(getActivity(), "Thay đổi mật khẩu thành công", Toast.LENGTH_SHORT).show();
+                        list = (ArrayList<admin>) dndao.getAll();
                         edPassOld.setText("");
                         edPassChange.setText("");
                         edRePassChange.setText("");
@@ -64,7 +67,6 @@ public class ChangePassFragment extends Fragment {
         return view;
 
     }
-
     public int validate(){
         int check =1;
         if (edPassOld.getText().length() == 0 || edPassChange.getText().length() == 0 || edRePassChange.getText().length() == 0){
