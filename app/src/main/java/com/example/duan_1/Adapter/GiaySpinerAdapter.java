@@ -41,8 +41,6 @@ public class GiaySpinerAdapter extends ArrayAdapter<giay> {
             gtenGiay.setText(item.getTenGiay());
             gloaiGiay = v.findViewById(R.id.gloaigiay);
             gloaiGiay.setText(item.getLoaiGiay());
-            ggiatien = v.findViewById(R.id.ggiatien);
-            ggiatien.setText(item.getGiaTien());
         }
         return v;
     }
@@ -60,8 +58,6 @@ public class GiaySpinerAdapter extends ArrayAdapter<giay> {
             gtenGiay.setText(item.getTenGiay());
             gloaiGiay = v.findViewById(R.id.gloaigiay);
             gloaiGiay.setText(item.getLoaiGiay());
-            ggiatien = v.findViewById(R.id.ggiatien);
-            ggiatien.setText(item.getGiaTien());
         }
         return v;
     }

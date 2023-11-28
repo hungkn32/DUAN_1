@@ -1,12 +1,18 @@
 package com.example.duan_1.fragment;
 
 import android.app.Dialog;
+import android.app.SearchManager;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -24,14 +30,56 @@ import com.example.duan_1.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class GiayFragment extends Fragment {
     RecyclerView rcvgiay;
     GiayAdapter adapter;
     giayDao dao;
     ArrayList<giay> list = new ArrayList<>();
-
+    ArrayList<giay> temList = new ArrayList<>();
     FloatingActionButton fltadd;
+    private SearchView view;
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        inflater.inflate(R.menu.menuseach,menu);
+        SearchManager manager = ((SearchManager) getActivity().getSystemService(Context.SEARCH_SERVICE));
+        MenuItem seMenuItem = menu.findItem(R.id.search);
+        view = (SearchView) seMenuItem.getActionView();
+        view.setSearchableInfo(manager.getSearchableInfo(getActivity().getComponentName()));
+        view.setMaxWidth(Integer.MAX_VALUE);
+        view.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                handleSearch(s);
+                return true;
+            }
+        });
+
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+    private void handleSearch(String query){
+        temList = new ArrayList<>();
+        for (giay giay: list){
+            if (giay.getTenGiay().toLowerCase().contains(query.toLowerCase())){
+                temList.add(giay);
+            }
+        }
+        adapter = new GiayAdapter(temList,getContext());
+        rcvgiay.setAdapter(adapter);
+    }
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

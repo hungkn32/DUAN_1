@@ -22,6 +22,7 @@ public class Login extends AppCompatActivity {
     CheckBox chkSave;
      dangnhapDao dao;
     TextView txtdangki;
+    String user,pass;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,8 +74,8 @@ public class Login extends AppCompatActivity {
     }
 
     private void checklogin(){
-       String user = ed_txtuser.getText().toString();
-        String pass = ed_txtpass.getText().toString();
+        user = ed_txtuser.getText().toString();
+        pass = ed_txtpass.getText().toString();
         if (user.trim().isEmpty() ||pass.trim().isEmpty()){
             Toast.makeText(this, "Tên đăng nhập hoặc mật khẩu không được bỏ trống", Toast.LENGTH_SHORT).show();
         }else {
@@ -82,7 +83,7 @@ public class Login extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Login thành công", Toast.LENGTH_SHORT).show();
                     rememberUser(user, pass, chkSave.isChecked());
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                    intent.putExtra("user", user);
+                    intent.putExtra("madn", user);
                     startActivity(intent);
                     finish();
                 }else {
@@ -90,5 +91,6 @@ public class Login extends AppCompatActivity {
                 }
         }
     }
+
 
 }
