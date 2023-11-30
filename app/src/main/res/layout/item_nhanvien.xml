@@ -45,7 +45,7 @@
                     />
 
                 <TextView
-                    android:id="@+id/txtmakh1"
+                    android:id="@+id/txtmanv"
                     android:textStyle="bold"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -67,10 +67,10 @@
                     android:textColor="@color/black"
                     android:textSize="15sp"
                     android:textStyle="bold"
-                     />
+                    />
 
                 <TextView
-                    android:id="@+id/txttenkh1"
+                    android:id="@+id/txttennv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
@@ -87,14 +87,14 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Năm Sinh:"
+                    android:text="CCCD:"
                     android:textColor="@color/black"
                     android:textSize="15sp"
                     android:textStyle="bold"
-                   />
+                    />
 
                 <TextView
-                    android:id="@+id/txtngaysinhkh1"
+                    android:id="@+id/txtCCCD"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="5dp"
@@ -111,14 +111,14 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Số điện thoại :"
+                    android:text="Địa Chỉ :"
                     android:textColor="@color/black"
                     android:textSize="15sp"
                     android:textStyle="bold"
-                   />
+                    />
 
                 <TextView
-                    android:id="@+id/txtsdt1"
+                    android:id="@+id/txtdiachinv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
@@ -126,35 +126,11 @@
                     android:textSize="18sp" />
 
             </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Địa chỉ :"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
-                    android:textStyle="bold"
-                     />
-
-                <TextView
-                    android:id="@+id/txtdiachi1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:textStyle="bold"
-                    android:textSize="18sp" />
-            </LinearLayout>
-
             <ImageButton
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginLeft="150dp"
-                android:id="@+id/kh_delte"
+                android:id="@+id/nv_delete"
                 android:backgroundTint="@color/common_google_signin_btn_text_dark_default"
                 android:src="@drawable/baseline_delete_24" />
         </LinearLayout>
