@@ -22,7 +22,7 @@ public class SharedViewModel extends ViewModel {
     }
 
     public void setMasp(int value) {
-        maspLiveData .setValue(value);
+        maspLiveData.setValue(value);
     }
 
     public LiveData<Integer> getMasp() {
@@ -34,7 +34,7 @@ public class SharedViewModel extends ViewModel {
     }
 
     public void setAddToCartClicked(boolean clicked) {
-        addToCartClickedLiveData .setValue(clicked);
+        addToCartClickedLiveData.setValue(clicked);
     }
 
     public void addProductToCart(int magiay) {

@@ -8,7 +8,7 @@ import androidx.annotation.Nullable;
 
 public class DBHelper extends SQLiteOpenHelper {
     public static final String dbname = "QLSHOES";
-    public static final int dbvesion =24;
+    public static final int dbvesion =27;
 
     public DBHelper(Context context) {
 
@@ -54,6 +54,14 @@ public class DBHelper extends SQLiteOpenHelper {
                 " tongtien integer not null," +
                 " trangthai text not null)";
         db.execSQL(donHang);
+        String gioHang = "CREATE TABLE GIOHANG(" +
+                "magiohang integer primary key autoincrement, " +
+                "madn integer REFERENCES TAIKHOAN(madn)," +
+                "maGiay text REFERENCES GIAY(maGiay)," +
+                "soluong integer not null)";
+        db.execSQL(gioHang);
+        db.execSQL("INSERT INTO GIOHANG VALUES(1,'admin','1',2000)," +
+                "(2,'admin','2',200)");
 
         db.execSQL("Insert into ADMIN values('admin','admin','admin123')," +
                 "('nhanvien','nhanvien','nhanvien123')");
@@ -81,6 +89,7 @@ db.execSQL("INSERT INTO DONHANG VALUES(1,'Hưng KN','Thôn 9 Hà Nội','Giày N
             db.execSQL("DROP TABLE IF EXISTS KHACHHANG");
             db.execSQL("DROP TABLE IF EXISTS DATHANG");
             db.execSQL("DROP TABLE IF EXISTS DONHANG");
+            db.execSQL("DROP TABLE IF EXISTS GIOHANG");
             onCreate(db);
         }
 

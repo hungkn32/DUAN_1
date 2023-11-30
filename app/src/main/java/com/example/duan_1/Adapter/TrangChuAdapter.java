@@ -29,6 +29,7 @@ public class TrangChuAdapter extends RecyclerView.Adapter<TrangChuAdapter.useVie
         this.context = context;
     }
 
+
     private OnAddToCartClickListenerTrangChu mAddToCartClickListener;
 
     public interface OnAddToCartClickListenerTrangChu {
@@ -67,14 +68,13 @@ public class TrangChuAdapter extends RecyclerView.Adapter<TrangChuAdapter.useVie
     public void onBindViewHolder(@NonNull useViewholer holder, int position) {
         giay g = mlist.get(position);
         holder.txtname.setText(g.getTenGiay());
-        holder.txt_gia.setText(String.valueOf(g.getGiaTien()));
+        holder.txt_gia.setText(String.valueOf(g.getGiaTien()+ " VND"));
         Picasso.get().load(g.getAvataanh()).into(holder.img);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (mListener != null) {
                     mListener.onItemClick(holder.getAdapterPosition());
-
                 }
             }
         });

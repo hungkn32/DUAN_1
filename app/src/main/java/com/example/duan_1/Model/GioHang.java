@@ -4,7 +4,7 @@ public class GioHang {
 
     private int maGioHang;
     private int magiay;
-    private int maNguoiDung;
+    private int madn;
 
     private int soLuongMua;
     private String tenSanPham;
@@ -23,16 +23,16 @@ public class GioHang {
     }
 
 
-    public GioHang(int magiay, int maNguoiDung, int soLuongMua) {
+    public GioHang(int magiay, int madn, int soLuongMua) {
         this.magiay = magiay;
-        this.maNguoiDung = maNguoiDung;
+        this.madn = madn;
         this.soLuongMua = soLuongMua;
     }
 
-    public GioHang(int maGioHang, int magiay, int maNguoiDung, int soLuongMua, String tenSanPham, int giaSanPham) {
+    public GioHang(int maGioHang, int magiay, int madn, int soLuongMua, String tenSanPham, int giaSanPham) {
         this.maGioHang = maGioHang;
         this.magiay = magiay;
-        this.maNguoiDung = maNguoiDung;
+        this.madn = madn;
         this.soLuongMua = soLuongMua;
         this.tenSanPham = tenSanPham;
         this.giaSanPham = giaSanPham;
@@ -54,12 +54,12 @@ public class GioHang {
         this.magiay = magiay;
     }
 
-    public int getMaNguoiDung() {
-        return maNguoiDung;
+    public int getMadn() {
+        return madn;
     }
 
-    public void setMaNguoiDung(int maNguoiDung) {
-        this.maNguoiDung = maNguoiDung;
+    public void setMadn(int maNguoiDung) {
+        this.madn = madn;
     }
 
     public int getSoLuongMua() {

@@ -22,14 +22,14 @@ public class GioHangDao {
         ArrayList<GioHang> list = new ArrayList<>();
         SQLiteDatabase database = dbHelper.getReadableDatabase();
         try {
-            Cursor c = database.rawQuery("SELECT GIOHANG.magiohang, GIAY.maGiay, GIOHANG.madn, GIOHANG.soluong,GIAY.tenGiay, SANPHAM.gia FROM GIOHANG, GIAY WHERE GIOHANG.maGiay = GIAY.maGiay", null);
+            Cursor c = database.rawQuery("SELECT GIOHANG.magiohang, GIAY.maGiay, GIOHANG.madn, GIOHANG.soluong,GIAY.tenGiay, GIAY.giaTien FROM GIOHANG, GIAY WHERE GIOHANG.maGiay = GIAY.maGiay", null);
             if (c.getCount() != 0) {
                 c.moveToFirst();
                 do {
                     GioHang gioHang = new GioHang();
                     gioHang.setMaGioHang(c.getInt(0));
                     gioHang.setMagiay(c.getInt(1));
-                    gioHang.setMaNguoiDung(c.getInt(2));
+                    gioHang.setMadn(c.getInt(2));
                     gioHang.setSoLuongMua(c.getInt(3));
                     gioHang.setTenSanPham(c.getString(4));
                     gioHang.setGiaSanPham(c.getInt(5));
@@ -44,8 +44,8 @@ public class GioHangDao {
     public boolean insertGioHang(GioHang gioHang){
         SQLiteDatabase da = dbHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put("masanpham",gioHang.getMagiay());
-        values.put("mataikhoan",gioHang.getMaNguoiDung());
+        values.put("maGiay",gioHang.getMagiay());
+        values.put("madn",gioHang.getMadn());
         values.put("soluong",gioHang.getSoLuongMua());
         long check = da.insert("GIOHANG",null,values);
         return check>0;
@@ -72,7 +72,7 @@ public class GioHangDao {
                 gioHang = new GioHang();
                 gioHang.setMaGioHang(cursor.getInt(0));
                 gioHang.setMagiay(cursor.getInt(1));
-                gioHang.setMaNguoiDung(cursor.getInt(2));
+                gioHang.setMadn(cursor.getInt(2));
                 gioHang.setSoLuongMua(cursor.getInt(3));
             }
             cursor.close();

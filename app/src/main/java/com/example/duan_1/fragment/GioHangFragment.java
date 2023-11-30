@@ -28,17 +28,15 @@ public class GioHangFragment extends Fragment implements GioHangAdapter.TotalPri
         ArrayList<GioHang> list = new ArrayList<>();
         GioHangDao gioHangDao;
         DonHangDao donHangDao;
-    private SharedViewModel sharedViewModel;
+     SharedViewModel sharedViewModel;
 
     private void displayCart(ArrayList<GioHang> cartList) {
         RecyclerView rcv = binding.rcvGioHang;
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         rcv.setLayoutManager(layoutManager);
-
         if (gioHangAdapter == null) {
             gioHangAdapter = new GioHangAdapter(getContext(), cartList);
             rcv.setAdapter(gioHangAdapter);
-
         } else {
             gioHangAdapter.updateCartList(cartList);
             gioHangAdapter.notifyDataSetChanged();
@@ -50,11 +48,14 @@ public class GioHangFragment extends Fragment implements GioHangAdapter.TotalPri
         binding =FragmentGiohangBinding.inflate(inflater, container, false);
         view  =binding.getRoot();
         RecyclerView rcv = binding.rcvGioHang;
+        gioHangDao = new GioHangDao(getContext());
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         rcv.setLayoutManager(layoutManager);
+        list = gioHangDao.getDSGioHang();
         gioHangAdapter = new GioHangAdapter(getContext(), list);
         rcv.setAdapter(gioHangAdapter);
-        gioHangDao = new GioHangDao(getContext());
+
+
         gioHangAdapter.setTotalPriceListener(this);
 
         donHangDao = new DonHangDao(getContext());

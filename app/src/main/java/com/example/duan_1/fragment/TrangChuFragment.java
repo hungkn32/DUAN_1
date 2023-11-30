@@ -50,6 +50,7 @@ import com.example.duan_1.Model.photo;
 import com.example.duan_1.R;
 import com.example.duan_1.SharedViewModel;
 import com.example.duan_1.databinding.DialogChitietSanphamBinding;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -92,31 +93,6 @@ public class TrangChuFragment extends Fragment {
         super.onCreateOptionsMenu(menu, inflater);
     }
 
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        switch (item.getItemId()) {
-//            case R.id.giohangcart:
-//                // Xử lý sự kiện khi nhấn vào biểu tượng giỏ hàng ở đây
-//                openCartFragment();
-//                return true;
-//            // Thêm các case khác nếu có nhiều mục menu khác
-//            default:
-//                return super.onOptionsItemSelected(item);
-//        }
-//    }
-
-    private void openCartFragment() {
-        // Mở Fragment giỏ hàng hoặc thực hiện hành động tương ứng
-        // Ví dụ:
-        // FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        // transaction.replace(R.id.fragment_container, new CartFragment());
-        // transaction.addToBackStack(null);
-        // transaction.commit();
-    }
-
-
-
-
 
     @Nullable
     @Override
@@ -130,7 +106,7 @@ public class TrangChuFragment extends Fragment {
         listdem = dao.getAll();
         StaggeredGridLayoutManager gridLayoutManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         rcv.setLayoutManager(gridLayoutManager);
-        adapter = new TrangChuAdapter(getContext(),list);
+        adapter = new TrangChuAdapter(getContext(), list);
         rcv.setAdapter(adapter);
 
 
@@ -193,6 +169,19 @@ public class TrangChuFragment extends Fragment {
 
             }
         });
+        adapter.notifyDataSetChanged();
+        gioHangDao = new GioHangDao(getContext());
+        sharedViewModel = new ViewModelProvider(requireActivity()).get(SharedViewModel.class);
+
+        gioHangAdapter = new GioHangAdapter(getContext(), new ArrayList<>());
+        adapter.setOnAddToCartClickListenerTrangChu(new TrangChuAdapter.OnAddToCartClickListenerTrangChu() {
+            @Override
+            public void onAddToCartClick(giay g) {
+                addToCart(g);
+                Snackbar.make(getView(), "Đã cập nhật giỏ hàng thành công", Snackbar.LENGTH_SHORT).show();
+            }
+
+        });
         adapter.setOnItemClick(new TrangChuAdapter.OnItemClick() {
             @Override
             public void onItemClick(int position) {
@@ -248,8 +237,9 @@ public class TrangChuFragment extends Fragment {
         }
     }
 
+
     private void addToCart(giay g) {
-        SharedPreferences sharedPreferences = getContext().getSharedPreferences("NGUOIDUNG", MODE_PRIVATE);
+        SharedPreferences sharedPreferences = getContext().getSharedPreferences("ADMIN", MODE_PRIVATE);
         int mand = sharedPreferences.getInt("madn", 0);
         if (!sharedViewModel.isProductInCart(g.getMagiay())) {
             sharedViewModel.setMasp(g.getMagiay());

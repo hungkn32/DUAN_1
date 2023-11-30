@@ -99,4 +99,16 @@ public class DonHangDao {
         }
         return list;
     }
+
+    public int getDoanhThu(String Start, String End){
+        Start = Start.replace("/","");
+        End = End.replace("/","");
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        Cursor cursor = db.rawQuery("SELECT SUM(tongTien) FROM DONHANG WHERE substr(ngaydathang,7) || substr(ngaydathang,4,2) || substr(ngaydathang,1,2) BETWEEN ? and ?",new String[]{Start,End});
+        if(cursor.getCount() != 0){
+            cursor.moveToFirst();
+            return cursor.getInt(0);
+        }
+        return 0;
+    }
 }
