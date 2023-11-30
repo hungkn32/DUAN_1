@@ -1,6 +1,9 @@
 package com.example.duan_1.Model;
 
-public class SanPham {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class SanPham  implements Parcelable {
     private String magiamgia;
     private String resouceimg;
     private String gia;
@@ -13,6 +16,36 @@ public class SanPham {
         this.resouceimg = resouceimg;
         this.gia = gia;
     }
+
+    protected SanPham(Parcel in) {
+        magiamgia = in.readString();
+        resouceimg = in.readString();
+        gia = in.readString();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(magiamgia);
+        dest.writeString(resouceimg);
+        dest.writeString(gia);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<SanPham> CREATOR = new Creator<SanPham>() {
+        @Override
+        public SanPham createFromParcel(Parcel in) {
+            return new SanPham(in);
+        }
+
+        @Override
+        public SanPham[] newArray(int size) {
+            return new SanPham[size];
+        }
+    };
 
     public String getMagiamgia() {
         return magiamgia;

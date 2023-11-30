@@ -12,9 +12,7 @@ import androidx.fragment.app.FragmentManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
@@ -24,7 +22,8 @@ import com.example.duan_1.Model.admin;
 import com.example.duan_1.fragment.ChangePassFragment;
 import com.example.duan_1.fragment.DoanhThuFragment;
 import com.example.duan_1.fragment.GiayFragment;
-import com.example.duan_1.fragment.HoaDonFragment;
+import com.example.duan_1.fragment.GioHangFragment;
+import com.example.duan_1.fragment.DonHangFragment;
 import com.example.duan_1.fragment.KhachHangFragment;
 import com.example.duan_1.fragment.NhanVienFragment;
 import com.example.duan_1.fragment.Top10Fragment;
@@ -64,12 +63,6 @@ public class MainActivity extends AppCompatActivity {
         String username = ad.getTendangnhap();
         tvUser.setText("Welcome " + username +  "!");
 
-        // admin co quyen add user
-        if (user.equalsIgnoreCase("admin")|| user.equalsIgnoreCase("nhanvien")) {
-            navigationView.getMenu().findItem(R.id.menu_tk_top10).setVisible(true);
-            navigationView.getMenu().findItem(R.id.menu_tk_DoanhThu).setVisible(true);
-        }
-
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -78,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
                     relaceFrg(frgtc);
                     toolbar.setTitle("Trang Chủ");
             } if (item.getItemId() == R.id.menu_hoadon) {
-                    HoaDonFragment frgPM = new HoaDonFragment();
+                    DonHangFragment frgPM = new DonHangFragment();
                     relaceFrg(frgPM);
                     toolbar.setTitle("Quản lý Hóa Đơn Đặt Hàng");
                 } else if (item.getItemId() == R.id.menu_giay) {
@@ -101,9 +94,13 @@ public class MainActivity extends AppCompatActivity {
                     NhanVienFragment frgđ = new NhanVienFragment();
                     relaceFrg(frgđ);
                 } else if (item.getItemId() == R.id.menu_ressetpass) {
-                     ChangePassFragment frgCP = new ChangePassFragment();
+                    ChangePassFragment frgCP = new ChangePassFragment();
                     relaceFrg(frgCP);
                     toolbar.setTitle("Đổi mật khẩu");
+                }else if (item.getItemId()==R.id.giohangcart){
+                    GioHangFragment frggh = new GioHangFragment();
+                    relaceFrg(frggh);
+                    toolbar.setTitle("Giỏ Hàng");
                 } else if (item.getItemId() == R.id.menu_logout) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(context);
                     builder.setTitle("Đăng Xuất");
@@ -122,13 +119,14 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
-        //hienthichucnang
-//        SharedPreferences sharedPreferences = getSharedPreferences("User-File",MODE_PRIVATE);
-//        String loaitk = sharedPreferences.getString("madn","");
-//        if (loaitk.equalsIgnoreCase("admin")){
+//        SharedPreferences sharedPreferences = getSharedPreferences("ADMIN", MODE_PRIVATE);
+//        String loaiTaiKhoan = sharedPreferences.getString("madn", "");
+//        if (!loaiTaiKhoan.equals("admin")) {
 //            Menu menu = navigationView.getMenu();
-//            menu.findItem(R.id.menu_tk_DoanhThu).setVisible(true);
-//            menu.findItem(R.id.menu_tk_top10).setVisible(true);
+//            menu.findItem(R.id.menu_tk_DoanhThu).setVisible(false);
+//            menu.findItem(R.id.menu_tk_top10).setVisible(false);
+//            menu.findItem(R.id.menu_khachhang).setVisible(false);
+//            menu.findItem(R.id.menu_nhanvien).setVisible(false);
 //        }
 
 
