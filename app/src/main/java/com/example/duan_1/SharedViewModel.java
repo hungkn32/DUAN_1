@@ -22,7 +22,7 @@ public class SharedViewModel extends ViewModel {
     }
 
     public void setMasp(int value) {
-        maspLiveData .setValue(value);
+        maspLiveData.setValue(value);
     }
 
     public LiveData<Integer> getMasp() {
@@ -34,7 +34,7 @@ public class SharedViewModel extends ViewModel {
     }
 
     public void setAddToCartClicked(boolean clicked) {
-        addToCartClickedLiveData .setValue(clicked);
+        addToCartClickedLiveData.setValue(clicked);
     }
 
     public void addProductToCart(int magiay) {
@@ -43,6 +43,18 @@ public class SharedViewModel extends ViewModel {
 
     public boolean isProductInCart(int magiay) {
         return cartProductIds.contains(magiay);
+    }
+
+    private MutableLiveData<String> imagePath = new MutableLiveData<>();
+
+    // Getter và Setter cho imagePath
+
+    public void setImagePath(String path) {
+        imagePath.setValue(path);
+    }
+
+    public LiveData<String> getImagePath() {
+        return imagePath;
     }
 
 

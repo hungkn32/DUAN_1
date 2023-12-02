@@ -63,6 +63,12 @@ public class MainActivity extends AppCompatActivity {
         String username = ad.getTendangnhap();
         tvUser.setText("Welcome " + username +  "!");
 
+        if (!user.equalsIgnoreCase("admin")){
+            navigationView.getMenu().findItem(R.id.menu_khachhang).setVisible(false);
+            navigationView.getMenu().findItem(R.id.menu_giay).setVisible(false);
+            navigationView.getMenu().findItem(R.id.menu_tk_DoanhThu).setVisible(false);
+        }
+
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -94,6 +100,10 @@ public class MainActivity extends AppCompatActivity {
                     ChangePassFragment frgCP = new ChangePassFragment();
                     relaceFrg(frgCP);
                     toolbar.setTitle("Đổi mật khẩu");
+                }else if (item.getItemId()==R.id.giohangcart){
+                    GioHangFragment frggh = new GioHangFragment();
+                    relaceFrg(frggh);
+                    toolbar.setTitle("Giỏ Hàng");
                 }else if (item.getItemId()==R.id.giohangcart){
                     GioHangFragment frggh = new GioHangFragment();
                     relaceFrg(frggh);

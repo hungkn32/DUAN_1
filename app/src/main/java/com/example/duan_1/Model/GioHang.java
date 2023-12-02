@@ -4,12 +4,13 @@ public class GioHang {
 
     private int maGioHang;
     private int magiay;
-    private int maNguoiDung;
+    private int manguoidung;
 
     private int soLuongMua;
     private String tenSanPham;
     private int giaSanPham;
     private boolean isSelected;
+    private String avata;
 
     public boolean isSelected() {
         return isSelected;
@@ -23,16 +24,17 @@ public class GioHang {
     }
 
 
-    public GioHang(int magiay, int maNguoiDung, int soLuongMua) {
+    public GioHang(int magiay, int manguoidung, int soLuongMua,String avata) {
         this.magiay = magiay;
-        this.maNguoiDung = maNguoiDung;
+        this.manguoidung = manguoidung;
         this.soLuongMua = soLuongMua;
+        this.avata = avata;
     }
 
-    public GioHang(int maGioHang, int magiay, int maNguoiDung, int soLuongMua, String tenSanPham, int giaSanPham) {
+    public GioHang(int maGioHang, int magiay, int manguoidung, int soLuongMua, String tenSanPham, int giaSanPham) {
         this.maGioHang = maGioHang;
         this.magiay = magiay;
-        this.maNguoiDung = maNguoiDung;
+        this.manguoidung = manguoidung;
         this.soLuongMua = soLuongMua;
         this.tenSanPham = tenSanPham;
         this.giaSanPham = giaSanPham;
@@ -54,12 +56,13 @@ public class GioHang {
         this.magiay = magiay;
     }
 
-    public int getMaNguoiDung() {
-        return maNguoiDung;
+
+    public int getManguoidung() {
+        return manguoidung;
     }
 
-    public void setMaNguoiDung(int maNguoiDung) {
-        this.maNguoiDung = maNguoiDung;
+    public void setManguoidung(int manguoidung) {
+        this.manguoidung = manguoidung;
     }
 
     public int getSoLuongMua() {

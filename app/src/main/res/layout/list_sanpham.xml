@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="142sp"
+    android:layout_width="170sp"
     android:layout_height="wrap_content"
     android:layout_marginBottom="40sp"
     android:backgroundTint="#82D685"
@@ -14,6 +14,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:gravity="center"
+            android:layout_gravity="center"
         >
         <ImageView
             android:id="@+id/img_AnhSp_Trang_Chu"
@@ -29,10 +31,13 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="2sp"
             android:text="Ten san pham"
+            android:textStyle="bold"
             android:textSize="15sp" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
             android:layout_height="wrap_content">
 
             <TextView
@@ -40,6 +45,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="100$"
+                android:textColor="#FF5722"
+                android:layout_marginLeft="15dp"
                 android:textSize="15sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/btnmuahang"

@@ -74,14 +74,32 @@
                         android:src="@drawable/cong_doan" />
                 </LinearLayout>
 
-                <TextView
-                    android:id="@+id/txtgia"
-                    android:layout_width="0sp"
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="end"
-                    android:text="44"
-                    android:textSize="20sp" />
+                    android:layout_marginTop="60dp"
+                    android:orientation="horizontal"
+                    >
+
+                    <TextView
+                        android:layout_width="50dp"
+                        android:layout_height="wrap_content"
+                        android:text="Tiền:"
+                        android:textColor="#E60D0D"
+                        android:layout_marginTop="0dp"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/txtgia"
+                        android:layout_width="0sp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="end"
+                        android:text="44"
+                        android:textSize="20sp" />
+                </LinearLayout>
+
 
             </LinearLayout>
 
