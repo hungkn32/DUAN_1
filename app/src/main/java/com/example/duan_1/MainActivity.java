@@ -136,7 +136,7 @@ public class MainActivity extends AppCompatActivity {
 //            menu.findItem(R.id.menu_nhanvien).setVisible(false);
 //        }
 
-
+    
     }
     public void relaceFrg(Fragment frg){
         FragmentManager fg = getSupportFragmentManager();

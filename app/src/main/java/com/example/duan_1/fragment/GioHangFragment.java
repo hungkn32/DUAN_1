@@ -86,7 +86,6 @@ public class GioHangFragment extends Fragment implements GioHangAdapter.TotalPri
             SharedPreferences sharedPreferences = getContext().getSharedPreferences("NGUOIDUNG", MODE_PRIVATE);
             int mand = sharedPreferences.getInt("mataikhoan", 0);
             LocalDate currentDate = LocalDate.now();
-            String tengiay =
 
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
             String ngayHienTai = currentDate.format(formatter);

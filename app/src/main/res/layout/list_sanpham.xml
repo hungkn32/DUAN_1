@@ -16,6 +16,7 @@
         android:orientation="vertical"
         android:gravity="center"
             android:layout_gravity="center"
+        android:background="@drawable/item_boder"
         >
         <ImageView
             android:id="@+id/img_AnhSp_Trang_Chu"
@@ -58,7 +59,7 @@
                 android:id="@+id/btnmuahang"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:backgroundTint="#82D685"
+                android:backgroundTint="#CCCCCC"
                 android:src="@drawable/cartadd"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
