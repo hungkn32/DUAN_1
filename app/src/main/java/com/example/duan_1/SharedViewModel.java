@@ -45,5 +45,17 @@ public class SharedViewModel extends ViewModel {
         return cartProductIds.contains(magiay);
     }
 
+    private MutableLiveData<String> imagePath = new MutableLiveData<>();
+
+    // Getter và Setter cho imagePath
+
+    public void setImagePath(String path) {
+        imagePath.setValue(path);
+    }
+
+    public LiveData<String> getImagePath() {
+        return imagePath;
+    }
+
 
 }

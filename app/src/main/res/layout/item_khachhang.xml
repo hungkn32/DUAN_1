@@ -38,7 +38,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Mã Khách Hàng:"
+                    android:text="Mã Nhân Viên:"
                     android:textColor="@color/black"
                     android:textSize="15sp"
                     android:textStyle="bold"
@@ -63,12 +63,11 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Tên Khách Hàng:"
+                    android:text="Tên Nhân Viên:"
                     android:textColor="@color/black"
                     android:textSize="15sp"
                     android:textStyle="bold"
                      />
-
                 <TextView
                     android:id="@+id/txttenkh1"
                     android:layout_width="wrap_content"

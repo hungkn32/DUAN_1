@@ -22,6 +22,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,6 +30,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -51,6 +54,7 @@ import com.example.duan_1.R;
 import com.example.duan_1.SharedViewModel;
 import com.example.duan_1.databinding.DialogChitietSanphamBinding;
 import com.google.android.material.snackbar.Snackbar;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -63,36 +67,30 @@ public class TrangChuFragment extends Fragment {
     private ViewPager viewPager;
     private CircleIndicator circleIndicator;
     private photoAdapter photoadapter;
-     List<photo> mlistphoto;
-     List<User> mlistuser;
-     ArrayList<giay> list;
+    List<photo> mlistphoto;
+    List<User> mlistuser;
+    ArrayList<giay> list;
     ArrayList<giay> listdem;
     private Timer timer;
     private RecyclerView rcv;
-   TrangChuAdapter adapter;
+    TrangChuAdapter adapter;
     GiayAdapter giayAdapter;
     giayDao dao;
 
     Menu menu;
-    GioHangDao gioHangDao;
-    GioHangAdapter gioHangAdapter;
-     SharedViewModel sharedViewModel;
-     EditText edtseach;
-     boolean hasMatchingProducts = true;
-     TextView sanpham;
+    private GioHangDao gioHangDao;
+    private GioHangAdapter gioHangAdapter;
+    SharedViewModel sharedViewModel;
+    EditText edtseach;
+    boolean hasMatchingProducts = true;
+    TextView sanpham;
+    private ImageView imageView;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
     }
-
-
-    @Override
-    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
-        inflater.inflate(R.menu.menu, menu);
-        super.onCreateOptionsMenu(menu, inflater);
-    }
-
 
     @Nullable
     @Override
@@ -108,7 +106,6 @@ public class TrangChuFragment extends Fragment {
         rcv.setLayoutManager(gridLayoutManager);
         adapter = new TrangChuAdapter(getContext(), list);
         rcv.setAdapter(adapter);
-
 
         viewPager = view.findViewById(R.id.viewpager);
         circleIndicator = view.findViewById(R.id.circle);
@@ -197,7 +194,7 @@ public class TrangChuFragment extends Fragment {
         listphoto.add(new photo(R.drawable.img_12));
         listphoto.add(new photo(R.drawable.img_13));
         listphoto.add(new photo(R.drawable.img_14));
-        listphoto.add(new photo(R.drawable.img_15)); 
+        listphoto.add(new photo(R.drawable.img_15));
         return listphoto;
     }
 
@@ -239,21 +236,27 @@ public class TrangChuFragment extends Fragment {
 
 
     private void addToCart(giay g) {
-        SharedPreferences sharedPreferences = getContext().getSharedPreferences("ADMIN", MODE_PRIVATE);
-        int mand = sharedPreferences.getInt("madn", 0);
+        SharedPreferences sharedPreferences = getContext().getSharedPreferences("NGUOIDUNG", MODE_PRIVATE);
+        int mand = sharedPreferences.getInt("mataikhoan", 0);
         if (!sharedViewModel.isProductInCart(g.getMagiay())) {
             sharedViewModel.setMasp(g.getMagiay());
             sharedViewModel.setAddToCartClicked(true);
             sharedViewModel.addProductToCart(g.getMagiay());
+//            sharedViewModel.getImagePath().observe(this, new Observer<String>() {
+//                @Override
+//                public void onChanged(String s) {
+//                    Picasso.get().load(s).into();
+//                }
+//            });
             sharedViewModel.setQuantityToAdd(1);
-            gioHangDao.insertGioHang(new GioHang(g.getMagiay(), mand, 1));
+            gioHangDao.insertGioHang(new GioHang(g.getMagiay(), mand, 1,g.getAvataanh()));
         } else {
-            GioHang hang = gioHangDao.getGioHangByMasp(g.getMagiay(),mand);
+            GioHang hang = gioHangDao.getGioHangByMasp(g.getMagiay(), mand);
             if (hang != null) {
                 hang.setSoLuongMua(hang.getSoLuongMua() + 1);
                 gioHangDao.updateGioHang(hang);
             } else {
-                GioHang newCartItem = new GioHang(g.getMagiay(), mand, 1);
+                GioHang newCartItem = new GioHang(g.getMagiay(), mand, 1,g.getAvataanh());
                 gioHangDao.insertGioHang(newCartItem);
             }
 
@@ -264,6 +267,7 @@ public class TrangChuFragment extends Fragment {
         gioHangAdapter.notifyDataSetChanged();
 
     }
+
     private void showDialogChiTietSanPham(giay g) {
         final Dialog dialog = new Dialog(getContext());
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -271,14 +275,16 @@ public class TrangChuFragment extends Fragment {
         dialog.setContentView(chiTietSanPhamBinding.getRoot());
 
         if (g != null) {
-            chiTietSanPhamBinding.txtMaSanPham.setText("Mã: " + String.valueOf(g.getMagiay()));
+            chiTietSanPhamBinding.txtMaSanPham.setText("Mã Giày: " + String.valueOf(g.getMagiay()));
             chiTietSanPhamBinding.txtTenSanPham.setText("Tên:" + g.getTenGiay());
             chiTietSanPhamBinding.txtGiaSanPham.setText("Giá: " + String.valueOf(g.getGiaTien()));
-            chiTietSanPhamBinding.txtLoaiSanPham.setText("Loại sản phẩm: " + g.getLoaiGiay());
+            chiTietSanPhamBinding.txtLoaiSanPham.setText("Loại Giày: " + g.getLoaiGiay());
+            ImageView img = chiTietSanPhamBinding.imgchitiet;
+            Picasso.get().load(g.getAvataanh()).into(img);
 
 
         }
-        chiTietSanPhamBinding.btnDongDialog.setOnClickListener(new View.OnClickListener() {
+        chiTietSanPhamBinding.spchiteietback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 dialog.dismiss();
@@ -299,4 +305,4 @@ public class TrangChuFragment extends Fragment {
         dialog.getWindow().setGravity(Gravity.BOTTOM);
 
     }
-    }
+}

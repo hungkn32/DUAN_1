@@ -19,6 +19,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -27,6 +28,7 @@ import com.example.duan_1.Dao.giayDao;
 import com.example.duan_1.Model.giay;
 import com.example.duan_1.Model.khachhang;
 import com.example.duan_1.R;
+import com.example.duan_1.SharedViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
@@ -40,6 +42,7 @@ public class GiayFragment extends Fragment {
     ArrayList<giay> temList = new ArrayList<>();
     FloatingActionButton fltadd;
     private SearchView view;
+    private SharedViewModel sharedViewModel;
 
 //    @Override
 //    public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -92,6 +95,9 @@ public class GiayFragment extends Fragment {
         rcvgiay.setLayoutManager(layoutManager);
         adapter = new GiayAdapter(list,getContext());
         rcvgiay.setAdapter(adapter);
+        sharedViewModel = new ViewModelProvider(requireActivity()).get(SharedViewModel.class);
+
+
         fltadd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -101,6 +107,9 @@ public class GiayFragment extends Fragment {
 
         });
         return view;
+    }
+    private void sendImagePath(String imagePath) {
+        sharedViewModel.setImagePath(imagePath);
     }
     private void dialogaddgiay() {
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());

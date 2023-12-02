@@ -1,9 +1,13 @@
 package com.example.duan_1.fragment;
 
+import static android.content.Context.MODE_PRIVATE;
+
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -15,10 +19,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.duan_1.Adapter.GioHangAdapter;
 import com.example.duan_1.Dao.DonHangDao;
 import com.example.duan_1.Dao.GioHangDao;
+import com.example.duan_1.Dao.dangnhapDao;
+import com.example.duan_1.Model.DonHang;
 import com.example.duan_1.Model.GioHang;
 import com.example.duan_1.SharedViewModel;
 import com.example.duan_1.databinding.FragmentGiohangBinding;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class GioHangFragment extends Fragment implements GioHangAdapter.TotalPriceListener{
@@ -29,6 +37,7 @@ public class GioHangFragment extends Fragment implements GioHangAdapter.TotalPri
         GioHangDao gioHangDao;
         DonHangDao donHangDao;
      SharedViewModel sharedViewModel;
+     ArrayList<DonHang> listdonhang = new ArrayList<>();
 
     private void displayCart(ArrayList<GioHang> cartList) {
         RecyclerView rcv = binding.rcvGioHang;
@@ -72,6 +81,28 @@ public class GioHangFragment extends Fragment implements GioHangAdapter.TotalPri
                 }
             }
         });
+        binding.btnThanhToan.setOnClickListener(view -> {
+            int totalAmount = Integer.parseInt(binding.txtTongTienThanhToan.getText().toString());
+            SharedPreferences sharedPreferences = getContext().getSharedPreferences("NGUOIDUNG", MODE_PRIVATE);
+            int mand = sharedPreferences.getInt("mataikhoan", 0);
+            LocalDate currentDate = LocalDate.now();
+            String tengiay =
+
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            String ngayHienTai = currentDate.format(formatter);
+            DonHang donHang = new DonHang(mand,ngayHienTai,totalAmount,"Đang giao hàng");
+            boolean check = donHangDao.insertDonHang(donHang);
+                    if (check){
+                        listdonhang.clear();
+                        listdonhang.addAll(donHangDao.getDsDonHang());
+                        Toast.makeText(getContext(), "Đặt Hàng Thành Công!", Toast.LENGTH_SHORT).show();
+                    }else {
+                        Toast.makeText(getContext(), "Thất bại!", Toast.LENGTH_SHORT).show();
+                    }
+
+        });
+        list = gioHangDao.getDSGioHang();
+        displayCart(list);
         return view;
     }
 
@@ -85,8 +116,8 @@ public class GioHangFragment extends Fragment implements GioHangAdapter.TotalPri
     }
     @Override
     public void onTotalPriceUpdated(int totalAmount) {
-//        if (binding != null && binding.txtTongTienThanhToan != null) {
-//            binding.txtTongTienThanhToan.setText(String.valueOf(totalAmount));
-//        }
+        if (binding != null && binding.txtTongTienThanhToan != null) {
+            binding.txtTongTienThanhToan.setText(String.valueOf(totalAmount));
+        }
     }
 }

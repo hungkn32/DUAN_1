@@ -37,6 +37,7 @@ public class GiayAdapter extends RecyclerView.Adapter<GiayAdapter.ViewHoler> {
 
     giayDao dao;
 
+
     public GiayAdapter(ArrayList<giay> list, Context context) {
         this.list = list;
         this.context = context;
@@ -60,17 +61,19 @@ public class GiayAdapter extends RecyclerView.Adapter<GiayAdapter.ViewHoler> {
         holder.txtgiatien.setText(String.valueOf("Giá Tiền: " + g.getGiaTien()));
         String imagePath = g.getAvataanh();
 
+
+
         if (imagePath != null && !imagePath.isEmpty()) {
             // Đường dẫn không rỗng, sử dụng Picasso để tải hình ảnh
             Picasso.get().load(imagePath).into(holder.img);
         } else {
-             holder.img.setVisibility(View.GONE);
+            holder.img.setVisibility(View.GONE);
         }
 
         holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
-                    dialogupdate(list.get(position));
+                dialogupdate(list.get(position));
                 return false;
             }
         });
@@ -83,24 +86,17 @@ public class GiayAdapter extends RecyclerView.Adapter<GiayAdapter.ViewHoler> {
                 builder.setPositiveButton("Xóa", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        giayDao dao = new giayDao(context);
-                        int check = dao.delete(g.getMagiay());
-                        switch (check) {
-                            case 1:
-                                list.clear();
-                                list = dao.getAll();
-                                notifyDataSetChanged();
-                                Toast.makeText(context, "Xóa thành viên thành công", Toast.LENGTH_SHORT).show();
-                                break;
-                            case 2:
-                                Toast.makeText(context, "Xóa thành viên thành công", Toast.LENGTH_SHORT).show();
-                                break;
-                            case -1:
-                                Toast.makeText(context, "Giày Không Tồn Tại, hiện không Thể Xóa", Toast.LENGTH_SHORT).show();
-                                break;
-                            default:
-                                break;
+                        giay g = list.get(position);
+                        giayDao spdao = new giayDao(context);
+                        if (spdao.delete(g.getMagiay())) {
+                            list.clear();
+                            list.addAll(spdao.getAll());
+                            notifyDataSetChanged();
+                            Toast.makeText(context, "Delete successfully!", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(context, "Delete failed!", Toast.LENGTH_SHORT).show();
                         }
+
                     }
                 });
                 notifyDataSetChanged();
@@ -109,6 +105,11 @@ public class GiayAdapter extends RecyclerView.Adapter<GiayAdapter.ViewHoler> {
             }
         });
     }
+
+    public interface ImageClickListener {
+        void onImageClick(String imagePath);
+    }
+
 
     private void dialogupdate(giay g) {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
@@ -125,30 +126,30 @@ public class GiayAdapter extends RecyclerView.Adapter<GiayAdapter.ViewHoler> {
         TextInputEditText ed_txurl = view.findViewById(R.id.ed_updateurl);
 
         Button btnupdategiay = view.findViewById(R.id.giay_Update);
-        Button btnhuy  =view.findViewById(R.id.giay_Cancel);
+        Button btnhuy = view.findViewById(R.id.giay_Cancel);
         ed_txtma.setText(String.valueOf(g.getMagiay()));
         ed_txtten.setText(g.getTenGiay());
         ed_txtloai.setText(g.getLoaiGiay());
         ed_txtgia.setText(String.valueOf(g.getGiaTien()));
         ed_txurl.setText(g.getAvataanh());
-            btnupdategiay.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    int ma = Integer.parseInt(ed_txtma.getText().toString());
-                    String ten = ed_txtten.getText().toString();
-                    String loaigiay  =ed_txtloai.getText().toString();
-                    int giatien =Integer.parseInt(ed_txtgia.getText().toString());
-                        String  url =ed_txurl.getText().toString();
-                        boolean check  =dao.update(ma,ten,loaigiay,giatien,url);
-                        if (check){
-                            notifyDataSetChanged();
-                            Toast.makeText(context, "Cập nhật Giày thành công", Toast.LENGTH_SHORT).show();
-                            dialog.dismiss();
-                        }else {
-                            Toast.makeText(context, "Cập nhật Giày thất bại", Toast.LENGTH_SHORT).show();
-                        }
+        btnupdategiay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int ma = Integer.parseInt(ed_txtma.getText().toString());
+                String ten = ed_txtten.getText().toString();
+                String loaigiay = ed_txtloai.getText().toString();
+                int giatien = Integer.parseInt(ed_txtgia.getText().toString());
+                String url = ed_txurl.getText().toString();
+                boolean check = dao.update(ma, ten, loaigiay, giatien, url);
+                if (check) {
+                    notifyDataSetChanged();
+                    Toast.makeText(context, "Cập nhật Giày thành công", Toast.LENGTH_SHORT).show();
+                    dialog.dismiss();
+                } else {
+                    Toast.makeText(context, "Cập nhật Giày thất bại", Toast.LENGTH_SHORT).show();
                 }
-            });
+            }
+        });
 
         btnhuy.setOnClickListener(new View.OnClickListener() {
             @Override

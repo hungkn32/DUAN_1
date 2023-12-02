@@ -24,12 +24,25 @@ public class giay implements Parcelable {
         this.avataanh = avataanh;
     }
 
+    public giay(String tenGiay, int giaTien) {
+        this.tenGiay = tenGiay;
+        this.giaTien = giaTien;
+
+    }
+
+    public giay(int magiay, String tenGiay, int giaTien, String loaiGiay) {
+        this.magiay = magiay;
+        this.tenGiay = tenGiay;
+        this.loaiGiay = loaiGiay;
+        this.giaTien = giaTien;
+    }
+
     protected giay(Parcel in) {
         magiay = in.readInt();
         tenGiay = in.readString();
         loaiGiay = in.readString();
         giaTien = in.readInt();
-        avataanh = in.readString();
+
     }
 
     public static final Creator<giay> CREATOR = new Creator<giay>() {
@@ -39,8 +52,8 @@ public class giay implements Parcelable {
         }
 
         @Override
-        public giay[] newArray(int size) {
-            return new giay[size];
+        public giay[] newArray(int i) {
+            return new giay[i];
         }
     };
 
@@ -95,7 +108,6 @@ public class giay implements Parcelable {
         parcel.writeString(tenGiay);
         parcel.writeString(loaiGiay);
         parcel.writeInt(giaTien);
-        parcel.writeString(avataanh);
     }
 }
 

@@ -63,6 +63,12 @@ public class MainActivity extends AppCompatActivity {
         String username = ad.getTendangnhap();
         tvUser.setText("Welcome " + username +  "!");
 
+        if (!user.equalsIgnoreCase("admin")){
+            navigationView.getMenu().findItem(R.id.menu_khachhang).setVisible(false);
+            navigationView.getMenu().findItem(R.id.menu_giay).setVisible(false);
+            navigationView.getMenu().findItem(R.id.menu_tk_DoanhThu).setVisible(false);
+        }
+
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -81,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
                 } else if (item.getItemId() == R.id.menu_khachhang) {
                     KhachHangFragment frgTV = new KhachHangFragment();
                     relaceFrg(frgTV);
-                    toolbar.setTitle("Quản lý Khách Hàng");
+                    toolbar.setTitle("Quản lý Nhân Viên");
                 } else if (item.getItemId() == R.id.menu_tk_top10) {
                     Top10Fragment frgt = new Top10Fragment();
                     relaceFrg(frgt);
@@ -90,13 +96,14 @@ public class MainActivity extends AppCompatActivity {
                     DoanhThuFragment frgTND = new DoanhThuFragment();
                     relaceFrg(frgTND);
                     toolbar.setTitle("Top Doanh Thu Cửa Hàng");
-                } else if (item.getItemId() == R.id.menu_nhanvien) {
-                    NhanVienFragment frgđ = new NhanVienFragment();
-                    relaceFrg(frgđ);
                 } else if (item.getItemId() == R.id.menu_ressetpass) {
                     ChangePassFragment frgCP = new ChangePassFragment();
                     relaceFrg(frgCP);
                     toolbar.setTitle("Đổi mật khẩu");
+                }else if (item.getItemId()==R.id.giohangcart){
+                    GioHangFragment frggh = new GioHangFragment();
+                    relaceFrg(frggh);
+                    toolbar.setTitle("Giỏ Hàng");
                 }else if (item.getItemId()==R.id.giohangcart){
                     GioHangFragment frggh = new GioHangFragment();
                     relaceFrg(frggh);

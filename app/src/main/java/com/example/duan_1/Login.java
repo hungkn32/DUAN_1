@@ -56,7 +56,6 @@ public class Login extends AppCompatActivity {
             }
         });
     }
-
     private void rememberUser(String u, String p, boolean status) {
         SharedPreferences pref = getSharedPreferences("User_File",MODE_PRIVATE);
         SharedPreferences.Editor edit = pref.edit();
@@ -72,7 +71,6 @@ public class Login extends AppCompatActivity {
         //lưu lại toàn bộ
         edit.commit();
     }
-
     private void checklogin(){
         user = ed_txtuser.getText().toString();
         pass = ed_txtpass.getText().toString();
@@ -91,6 +89,4 @@ public class Login extends AppCompatActivity {
                 }
         }
     }
-
-
 }

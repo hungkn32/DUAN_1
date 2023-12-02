@@ -10,7 +10,6 @@ import android.util.Log;
 import com.example.duan_1.Database.DBHelper;
 import com.example.duan_1.Model.giay;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,20 +49,10 @@ public class giayDao {
             return true;
         }
     }
-
-    public int delete(int magiay){
+    public boolean delete(int magiay){
          database = dbHelper.getWritableDatabase();
-        Cursor cursor = database.rawQuery("select * from DONHANG where maGiay = ?", new String[]{String.valueOf(magiay)});
-        if (cursor.getCount() != 0) {
-            return -1;
-        }
-
-        long check = database.delete("GIAY", "maGiay = ?", new String[]{String.valueOf(magiay)});
-        if (check == -1) {
-            return 0;
-        } else {
-            return 1;
-        }
+        long row = database.delete("GIAY", "maGiay=?", new String[]{String.valueOf(magiay)});
+        return (row > 0);
     }
     public boolean update(int ma,String ten, String loai,int gia,String url){
         SQLiteDatabase db = dbHelper.getWritableDatabase();

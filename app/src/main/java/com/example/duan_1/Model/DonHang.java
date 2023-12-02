@@ -2,6 +2,7 @@ package com.example.duan_1.Model;
 
 public class DonHang {
     private int maDonHang;
+    private int mataikhoan;
     private String tenkh;
     private String diachi;
     private String tengiay;
@@ -14,8 +15,16 @@ public class DonHang {
     public DonHang() {
     }
 
-    public DonHang(int maDonHang, String tenkh,String diachi,String tengiay,String loaigiay, String ngayDatHang, int tongTien, String trangthai) {
+    public DonHang(int mataikhoan,String ngayDatHang,int tongTien,String trangthai){
+       this.mataikhoan = mataikhoan;;
+       this.ngayDatHang = ngayDatHang;
+       this.tongTien = tongTien;
+     this.trangthai = trangthai;
+    }
+
+    public DonHang(int maDonHang,int mataikhoan, String tenkh,String diachi,String tengiay,String loaigiay, String ngayDatHang, int tongTien, String trangthai) {
         this.maDonHang = maDonHang;
+        this.mataikhoan= mataikhoan;
         this.tenkh = tenkh;
         this.diachi = diachi;
         this.tengiay = tengiay;
@@ -24,6 +33,7 @@ public class DonHang {
         this.tongTien = tongTien;
         this.trangthai = trangthai;
     }
+
 
     public int getMaDonHang() {
         return maDonHang;
@@ -75,6 +85,14 @@ public class DonHang {
 
     public String getTengiay() {
         return tengiay;
+    }
+
+    public int getMataikhoan() {
+        return mataikhoan;
+    }
+
+    public void setMataikhoan(int mataikhoan) {
+        this.mataikhoan = mataikhoan;
     }
 
     public void setTengiay(String tengiay) {

@@ -27,19 +27,24 @@ public class DonHangDao {
         ArrayList<DonHang> list = new ArrayList<>();
         SQLiteDatabase database = dbHelper.getReadableDatabase();
         try {
-            Cursor cursor = database.rawQuery("SELECT *FROM DONHANG", null);
+            Cursor cursor = database.rawQuery("SELECT DONHANG.madonhang, ADMIN.mataikhoan, KHACHHANG.tenKH, KHACHHANG.diaChi, GIAY.tenGiay, GIAY.loaiGiay, DONHANG.ngaydathang, DONHANG.tongtien, DONHANG.trangthai\n" +
+                    "FROM DONHANG\n" +
+                    "LEFT JOIN ADMIN ON DONHANG.mataikhoan = ADMIN.mataikhoan\n" +
+                    "LEFT JOIN KHACHHANG ON DONHANG.tenKH = KHACHHANG.tenKH AND DONHANG.diaChi=KHACHHANG.diaChi\n" +
+                    "LEFT JOIN GIAY ON DONHANG.tenGiay = GIAY.tenGiay AND DONHANG.loaiGiay = GIAY.loaiGiay;\n", null);
             if (cursor.getCount() > 0) {
                 cursor.moveToFirst();
                 do {
                     DonHang donHang = new DonHang();
                     donHang.setMaDonHang(cursor.getInt(0));
-                    donHang.setTenkh(cursor.getString(1));
-                    donHang.setDiachi(cursor.getString(2));
-                    donHang.setTengiay(cursor.getString(3));
-                    donHang.setLoaigiay(cursor.getString(4));
-                    donHang.setNgayDatHang(cursor.getString(5));
-                    donHang.setTongTien(cursor.getInt(6));
-                    donHang.setTrangthai(cursor.getString(7));
+                    donHang.setMataikhoan(cursor.getInt(1));
+                    donHang.setTenkh(cursor.getString(2));
+                    donHang.setDiachi(cursor.getString(3));
+                    donHang.setTengiay(cursor.getString(4));
+                    donHang.setLoaigiay(cursor.getString(5));
+                    donHang.setNgayDatHang(cursor.getString(6));
+                    donHang.setTongTien(cursor.getInt(7));
+                    donHang.setTrangthai(cursor.getString(8));
                     list.add(donHang);
                 } while (cursor.moveToNext());
             }
@@ -48,9 +53,9 @@ public class DonHangDao {
         }
         return list;
     }
-    public boolean xoaDonHang(DonHang donHang){
+    public boolean xoaDonHang(int madonhang){
         SQLiteDatabase sqLiteDatabase = dbHelper.getWritableDatabase();
-        long check = sqLiteDatabase.delete("DONHANG","madonhang = ?",new String[]{String.valueOf(donHang.getMaDonHang())});
+        long check = sqLiteDatabase.delete("DONHANG","madonhang = ?",new String[]{String.valueOf(madonhang)});
         return check >0;
 
     }
@@ -67,6 +72,7 @@ public class DonHangDao {
     public boolean insertDonHang(DonHang donHang){
         SQLiteDatabase da = dbHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
+        values.put("mataikhoan",donHang.getMataikhoan());
         values.put("tenKH",donHang.getTenkh());
         values.put("ngaydathang",donHang.getNgayDatHang());
         values.put("tongtien",donHang.getTongTien());

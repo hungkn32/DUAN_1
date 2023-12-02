@@ -22,14 +22,16 @@ public class GioHangDao {
         ArrayList<GioHang> list = new ArrayList<>();
         SQLiteDatabase database = dbHelper.getReadableDatabase();
         try {
-            Cursor c = database.rawQuery("SELECT GIOHANG.magiohang, GIAY.maGiay, GIOHANG.madn, GIOHANG.soluong,GIAY.tenGiay, GIAY.giaTien FROM GIOHANG, GIAY WHERE GIOHANG.maGiay = GIAY.maGiay", null);
+            Cursor c = database.rawQuery("SELECT GIOHANG.magiohang, GIAY.maGiay, GIOHANG.mataikhoan, GIOHANG.soluong, GIAY.tenGiay, GIAY.giaTien\n" +
+                    "FROM GIOHANG\n" +
+                    "JOIN GIAY ON GIOHANG.maGiay = GIAY.maGiay;\n", null);
             if (c.getCount() != 0) {
                 c.moveToFirst();
                 do {
                     GioHang gioHang = new GioHang();
                     gioHang.setMaGioHang(c.getInt(0));
                     gioHang.setMagiay(c.getInt(1));
-                    gioHang.setMadn(c.getInt(2));
+                    gioHang.setManguoidung(c.getInt(2));
                     gioHang.setSoLuongMua(c.getInt(3));
                     gioHang.setTenSanPham(c.getString(4));
                     gioHang.setGiaSanPham(c.getInt(5));
@@ -45,7 +47,7 @@ public class GioHangDao {
         SQLiteDatabase da = dbHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put("maGiay",gioHang.getMagiay());
-        values.put("madn",gioHang.getMadn());
+        values.put("mataikhoan",gioHang.getManguoidung());
         values.put("soluong",gioHang.getSoLuongMua());
         long check = da.insert("GIOHANG",null,values);
         return check>0;
@@ -66,13 +68,13 @@ public class GioHangDao {
         GioHang gioHang = null;
         SQLiteDatabase database = dbHelper.getReadableDatabase();
         try {
-            Cursor cursor = database.rawQuery("SELECT * FROM GIOHANG WHERE masanpham = ? AND mataikhoan = ?", new String[]{String.valueOf(masp), String.valueOf(mand)});
+            Cursor cursor = database.rawQuery("SELECT * FROM GIOHANG WHERE maGiay = ? AND mataikhoan = ?", new String[]{String.valueOf(masp), String.valueOf(mand)});
             if (cursor.getCount() > 0) {
                 cursor.moveToFirst();
                 gioHang = new GioHang();
                 gioHang.setMaGioHang(cursor.getInt(0));
                 gioHang.setMagiay(cursor.getInt(1));
-                gioHang.setMadn(cursor.getInt(2));
+                gioHang.setManguoidung(cursor.getInt(2));
                 gioHang.setSoLuongMua(cursor.getInt(3));
             }
             cursor.close();
