@@ -65,6 +65,7 @@ public class GioHangFragment extends Fragment implements GioHangAdapter.TotalPri
         rcv.setAdapter(gioHangAdapter);
 
 
+
         gioHangAdapter.setTotalPriceListener(this);
 
         donHangDao = new DonHangDao(getContext());
@@ -83,7 +84,7 @@ public class GioHangFragment extends Fragment implements GioHangAdapter.TotalPri
         });
         binding.btnThanhToan.setOnClickListener(view -> {
             int totalAmount = Integer.parseInt(binding.txtTongTienThanhToan.getText().toString());
-            SharedPreferences sharedPreferences = getContext().getSharedPreferences("NGUOIDUNG", MODE_PRIVATE);
+            SharedPreferences sharedPreferences = getContext().getSharedPreferences("User_File", MODE_PRIVATE);
             int mand = sharedPreferences.getInt("mataikhoan", 0);
             LocalDate currentDate = LocalDate.now();
 

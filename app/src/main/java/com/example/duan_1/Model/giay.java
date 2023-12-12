@@ -12,16 +12,16 @@ public class giay implements Parcelable {
     private int giaTien;
 
     private String avataanh;
+    private int soluong;
 
-    public giay() {
-    }
 
-    public giay(int magiay, String tenGiay, String loaiGiay, int giaTien, String avataanh) {
+    public giay(int magiay, String tenGiay, String loaiGiay, int giaTien, String avataanh, int soluong) {
         this.magiay = magiay;
         this.tenGiay = tenGiay;
         this.loaiGiay = loaiGiay;
         this.giaTien = giaTien;
         this.avataanh = avataanh;
+        this.soluong = soluong;
     }
 
     public giay(String tenGiay, int giaTien) {
@@ -42,9 +42,14 @@ public class giay implements Parcelable {
         tenGiay = in.readString();
         loaiGiay = in.readString();
         giaTien = in.readInt();
+        soluong = in.readInt();
 
     }
-
+    public void giamSoLuong() {
+        if (soluong > 0) {
+            soluong--;
+        }
+    }
     public static final Creator<giay> CREATOR = new Creator<giay>() {
         @Override
         public giay createFromParcel(Parcel in) {
@@ -56,6 +61,14 @@ public class giay implements Parcelable {
             return new giay[i];
         }
     };
+
+    public int getSoluong() {
+        return soluong;
+    }
+
+    public void setSoluong(int soluong) {
+        this.soluong = soluong;
+    }
 
     public int getMagiay() {
         return magiay;
@@ -108,6 +121,7 @@ public class giay implements Parcelable {
         parcel.writeString(tenGiay);
         parcel.writeString(loaiGiay);
         parcel.writeInt(giaTien);
+        parcel.writeInt(soluong);
     }
 }
 

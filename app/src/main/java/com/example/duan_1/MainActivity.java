@@ -63,10 +63,11 @@ public class MainActivity extends AppCompatActivity {
         String username = ad.getTendangnhap();
         tvUser.setText("Welcome " + username +  "!");
 
-        if (!user.equalsIgnoreCase("admin")){
+        if (!user.equalsIgnoreCase("admin")&&!user.equalsIgnoreCase("nhanvien")){
             navigationView.getMenu().findItem(R.id.menu_khachhang).setVisible(false);
             navigationView.getMenu().findItem(R.id.menu_giay).setVisible(false);
             navigationView.getMenu().findItem(R.id.menu_tk_DoanhThu).setVisible(false);
+            navigationView.getMenu().findItem(R.id.menu_hoadon).setVisible(false);
         }
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {

@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.duan_1.Dao.GioHangDao;
 import com.example.duan_1.Model.GioHang;
 import com.example.duan_1.databinding.ItemGiohangBinding;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -39,6 +40,7 @@ public class GioHangAdapter extends RecyclerView.Adapter<GioHangAdapter.ViewHole
         holder.binding.txtgia.setText(String.valueOf(gioHang.getGiaSanPham() * gioHang.getSoLuongMua()));
         holder.binding.txttensp.setText(gioHang.getTenSanPham());
         holder.binding.txtsoluong.setText(String.valueOf(gioHang.getSoLuongMua()));
+        Picasso.get().load(gioHang.getAvata()).into(holder.binding.imganhsp);
 
         holder.binding.chkChonSanPham.setOnCheckedChangeListener((compoundButton, b) -> {
             gioHang.setSelected(b);
@@ -65,7 +67,15 @@ public class GioHangAdapter extends RecyclerView.Adapter<GioHangAdapter.ViewHole
         });
 
     }
+    public interface OnCartItemPayListener {
+        void onCartItemPay(int position);
+    }
 
+    private OnCartItemPayListener onCartItemPayListener;
+
+    public void setOnCartItemPayListener(OnCartItemPayListener listener) {
+        this.onCartItemPayListener = listener;
+    }
     public void updateCartList(ArrayList<GioHang> updatedList) {
         list.clear();
         list.addAll(updatedList);

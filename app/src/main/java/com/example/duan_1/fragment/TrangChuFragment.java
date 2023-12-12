@@ -242,12 +242,12 @@ public class TrangChuFragment extends Fragment {
             sharedViewModel.setMasp(g.getMagiay());
             sharedViewModel.setAddToCartClicked(true);
             sharedViewModel.addProductToCart(g.getMagiay());
-//            sharedViewModel.getImagePath().observe(this, new Observer<String>() {
-//                @Override
-//                public void onChanged(String s) {
-//                    Picasso.get().load(s).into();
-//                }
-//            });
+            sharedViewModel.getImagePath().observe(this, new Observer<String>() {
+                @Override
+                public void onChanged(String s) {
+                    Picasso.get().load(s).into(imageView);
+                }
+            });
             sharedViewModel.setQuantityToAdd(1);
             gioHangDao.insertGioHang(new GioHang(g.getMagiay(), mand, 1,g.getAvataanh()));
         } else {
@@ -279,6 +279,7 @@ public class TrangChuFragment extends Fragment {
             chiTietSanPhamBinding.txtTenSanPham.setText("Tên:" + g.getTenGiay());
             chiTietSanPhamBinding.txtGiaSanPham.setText("Giá: " + String.valueOf(g.getGiaTien()));
             chiTietSanPhamBinding.txtLoaiSanPham.setText("Loại Giày: " + g.getLoaiGiay());
+            chiTietSanPhamBinding.txtsoluong.setText("Số Lượng: "+g.getSoluong());
             ImageView img = chiTietSanPhamBinding.imgchitiet;
             Picasso.get().load(g.getAvataanh()).into(img);
 
@@ -294,7 +295,6 @@ public class TrangChuFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 addToCart(g);
-//                Snackbar.make(getView(), "Đã cập nhật giỏ hàng thành công", Snackbar.LENGTH_SHORT).show();
                 Toast.makeText(getContext(), "Đã cập nhật giỏ hàng thành công", Toast.LENGTH_SHORT).show();
             }
         });

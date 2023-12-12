@@ -59,12 +59,9 @@ public class GiayAdapter extends RecyclerView.Adapter<GiayAdapter.ViewHoler> {
         holder.txttengiay.setText("Tên Giày: " + g.getTenGiay());
         holder.txtloaigiay.setText("Loại Giày: " + g.getLoaiGiay());
         holder.txtgiatien.setText(String.valueOf("Giá Tiền: " + g.getGiaTien()));
+        holder.txtsoluong.setText(String.valueOf("Số Lượng: "+g.getSoluong()));
         String imagePath = g.getAvataanh();
-
-
-
         if (imagePath != null && !imagePath.isEmpty()) {
-            // Đường dẫn không rỗng, sử dụng Picasso để tải hình ảnh
             Picasso.get().load(imagePath).into(holder.img);
         } else {
             holder.img.setVisibility(View.GONE);
@@ -106,8 +103,14 @@ public class GiayAdapter extends RecyclerView.Adapter<GiayAdapter.ViewHoler> {
         });
     }
 
-    public interface ImageClickListener {
-        void onImageClick(String imagePath);
+    private OnCartItemPayListener onCartItemPayListener;
+
+    public interface OnCartItemPayListener {
+        void onCartItemPay(int position);
+    }
+
+    public void setOnCartItemPayListener(OnCartItemPayListener listener) {
+        this.onCartItemPayListener = listener;
     }
 
 
@@ -124,6 +127,7 @@ public class GiayAdapter extends RecyclerView.Adapter<GiayAdapter.ViewHoler> {
         TextInputEditText ed_txtloai = view.findViewById(R.id.ed_updateloaigiay);
         TextInputEditText ed_txtgia = view.findViewById(R.id.ed_updategiatien);
         TextInputEditText ed_txurl = view.findViewById(R.id.ed_updateurl);
+        TextInputEditText ed_soluong = view.findViewById(R.id.ed_updatesl);
 
         Button btnupdategiay = view.findViewById(R.id.giay_Update);
         Button btnhuy = view.findViewById(R.id.giay_Cancel);
@@ -132,6 +136,8 @@ public class GiayAdapter extends RecyclerView.Adapter<GiayAdapter.ViewHoler> {
         ed_txtloai.setText(g.getLoaiGiay());
         ed_txtgia.setText(String.valueOf(g.getGiaTien()));
         ed_txurl.setText(g.getAvataanh());
+        ed_soluong.setText(String.valueOf(g.getSoluong()));
+
         btnupdategiay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -140,7 +146,8 @@ public class GiayAdapter extends RecyclerView.Adapter<GiayAdapter.ViewHoler> {
                 String loaigiay = ed_txtloai.getText().toString();
                 int giatien = Integer.parseInt(ed_txtgia.getText().toString());
                 String url = ed_txurl.getText().toString();
-                boolean check = dao.update(ma, ten, loaigiay, giatien, url);
+                int soluong = Integer.parseInt(ed_soluong.getText().toString());
+                boolean check = dao.update(ma, ten, loaigiay, giatien, url,soluong);
                 if (check) {
                     notifyDataSetChanged();
                     Toast.makeText(context, "Cập nhật Giày thành công", Toast.LENGTH_SHORT).show();
@@ -172,7 +179,7 @@ public class GiayAdapter extends RecyclerView.Adapter<GiayAdapter.ViewHoler> {
     public class ViewHoler extends RecyclerView.ViewHolder {
         ImageView img;
         ImageButton imgdelete;
-        TextView txtmagiay, txttengiay, txtloaigiay, txtgiatien;
+        TextView txtmagiay, txttengiay, txtloaigiay, txtgiatien,txtsoluong;
 
         public ViewHoler(@NonNull View itemView) {
 
@@ -183,6 +190,7 @@ public class GiayAdapter extends RecyclerView.Adapter<GiayAdapter.ViewHoler> {
             txtloaigiay = itemView.findViewById(R.id.loaiGiayTextView);
             txtgiatien = itemView.findViewById(R.id.giaTienTextView);
             imgdelete = itemView.findViewById(R.id.imgdeltegiay);
+            txtsoluong = itemView.findViewById(R.id.soluongTextView);
         }
     }
 }

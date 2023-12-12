@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.duan_1.Dao.KhachHangDao;
 import com.example.duan_1.Dao.giayDao;
+import com.example.duan_1.Model.giay;
 import com.example.duan_1.Model.khachhang;
 import com.example.duan_1.R;
 import com.google.android.material.textfield.TextInputEditText;
@@ -63,24 +64,18 @@ public class KhachHangAdapter extends RecyclerView.Adapter<KhachHangAdapter.View
                 builder.setPositiveButton("Xóa", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        dao  = new KhachHangDao(context);
-                        int check = dao.delete(kh.getMakh());
-                        switch (check) {
-                            case 1:
-                                list.clear();
-                                list = dao.getall();
-                                notifyDataSetChanged();
-                                Toast.makeText(context, "Xóa thành viên thành công", Toast.LENGTH_SHORT).show();
-                                break;
-                            case 0:
-                                Toast.makeText(context, "Xóa thành viên thất bại", Toast.LENGTH_SHORT).show();
-                                break;
-                            case -1:
-                                Toast.makeText(context, "Thành viên đang tồn tại DON HANG, hiện tại không thể xóa", Toast.LENGTH_SHORT).show();
-                                break;
-                            default:
-                                break;
+                        khachhang kh = list.get(position);
+                        KhachHangDao khdao = new KhachHangDao(context);
+                        if (khdao.delete(kh.getMakh())) {
+                            list.clear();
+                            list.addAll(khdao.getall());
+                            notifyDataSetChanged();
+                            Toast.makeText(context, "Delete successfully!", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(context, "Delete failed!", Toast.LENGTH_SHORT).show();
                         }
+
+
                     }
                 });
                 notifyDataSetChanged();

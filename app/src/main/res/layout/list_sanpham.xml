@@ -23,6 +23,8 @@
             android:layout_width="match_parent"
             android:layout_height="150sp"
             android:scaleType="centerCrop"
+            android:layout_marginTop="5dp"
+            android:layout_margin="5dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
@@ -30,7 +32,7 @@
             android:id="@+id/txtten_san_pham"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="2sp"
+            android:layout_marginLeft="5sp"
             android:text="Ten san pham"
             android:textStyle="bold"
             android:textSize="15sp" />
@@ -59,7 +61,7 @@
                 android:id="@+id/btnmuahang"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:backgroundTint="#CCCCCC"
+                android:backgroundTint="#FFFFFF"
                 android:src="@drawable/cartadd"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

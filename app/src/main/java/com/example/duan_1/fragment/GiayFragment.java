@@ -44,45 +44,7 @@ public class GiayFragment extends Fragment {
     private SearchView view;
     private SharedViewModel sharedViewModel;
 
-//    @Override
-//    public void onCreate(@Nullable Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        setHasOptionsMenu(true);
-//    }
-//
-//    @Override
-//    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
-//        inflater.inflate(R.menu.menuseach,menu);
-//        SearchManager manager = ((SearchManager) getActivity().getSystemService(Context.SEARCH_SERVICE));
-//        MenuItem seMenuItem = menu.findItem(R.id.search);
-//        view = (SearchView) seMenuItem.getActionView();
-//        view.setSearchableInfo(manager.getSearchableInfo(getActivity().getComponentName()));
-//        view.setMaxWidth(Integer.MAX_VALUE);
-//        view.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-//            @Override
-//            public boolean onQueryTextSubmit(String s) {
-//                return true;
-//            }
-//
-//            @Override
-//            public boolean onQueryTextChange(String s) {
-//                handleSearch(s);
-//                return true;
-//            }
-//        });
-//
-//        super.onCreateOptionsMenu(menu, inflater);
-//    }
-//    private void handleSearch(String query){
-//        temList = new ArrayList<>();
-//        for (giay giay: list){
-//            if (giay.getTenGiay().toLowerCase().contains(query.toLowerCase())){
-//                temList.add(giay);
-//            }
-//        }
-//        adapter = new GiayAdapter(temList,getContext());
-//        rcvgiay.setAdapter(adapter);
-//    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -123,6 +85,7 @@ public class GiayFragment extends Fragment {
         EditText edtloaigiay = view.findViewById(R.id.edtloaigiay);
         EditText edtgiatien = view.findViewById(R.id.edtgiatien);
         EditText edtavata = view.findViewById(R.id.edtavatagiay);
+        EditText edtsoluong = view.findViewById(R.id.edtsoluong);
         Button btnadd = view.findViewById(R.id.btnaddgiay);
         Button btnhuy =  view.findViewById(R.id.btnhuyaddgiay);
 
@@ -133,7 +96,8 @@ public class GiayFragment extends Fragment {
                 String loaigiay = edtloaigiay.getText().toString();
                 int giatien  = Integer.parseInt(edtgiatien.getText().toString());
                 String urlavata = edtavata.getText().toString();
-                boolean check = dao.insert(tengiay,loaigiay,giatien,urlavata);
+                int soluong = Integer.parseInt(edtsoluong.getText().toString());
+                boolean check = dao.insert(tengiay,loaigiay,giatien,urlavata,soluong);
                     if (check){
                         Toast.makeText(getContext(), "Thêm Giày Thành Công", Toast.LENGTH_SHORT).show();
                         updatedata();

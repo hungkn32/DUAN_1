@@ -61,6 +61,14 @@ public class GioHang {
         return manguoidung;
     }
 
+    public String getAvata() {
+        return avata;
+    }
+
+    public void setAvata(String avata) {
+        this.avata = avata;
+    }
+
     public void setManguoidung(int manguoidung) {
         this.manguoidung = manguoidung;
     }

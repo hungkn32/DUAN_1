@@ -13,7 +13,7 @@
         android:layout_marginLeft="30dp"
         android:layout_marginTop="30dp"
         android:layout_marginBottom="20dp"
-        android:text="Login"
+        android:text="Đăng Nhập Để Tiếp Tục"
         android:textColor="#E91E63"
         android:textSize="50dp"
         android:textStyle="italic" />
@@ -93,8 +93,8 @@
                 android:layout_width="250dp"
                 android:layout_height="60dp"
                 android:text="Đăng Nhập"
-                android:textColor="#063A7A"
-                android:backgroundTint="#F16CEF"
+                android:textColor="#CD5C82"
+                android:backgroundTint="#3F729A"
                 android:textSize="28dp"
                 android:textStyle="bold" />
         </LinearLayout>

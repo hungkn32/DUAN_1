@@ -1,82 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:orientation="vertical"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:hint="Thêm Giày"
-       android:gravity="center"
-        android:textStyle="bold"
+        android:text="ADD Giày"
         android:textSize="30dp"
-        android:id="@+id/txtmagiay"
-        />
+        android:textStyle="bold"/>
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/edttengiay"
-        android:hint="Nhập tên Giày"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginTop="5dp"/>
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/edtloaigiay"
-        android:hint="Nhập Loại Giày"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginTop="5dp"/>
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/edtgiatien"
-        android:hint="Nhập Giá Tiền"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginTop="5dp"/>
 
-    <EditText
-        android:id="@+id/edtavatagiay"
-        android:layout_width="2200dp"
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="10dp"
-        android:hint="Nhập url ảnh" />
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="10dp"
+        android:id="@+id/in_updatetengiay">
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nhập tên Giày"
+            android:id="@+id/edttengiay"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="10dp"
+        android:id="@+id/in_updateloaigiay">
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nhập Loại Giày"
+            android:id="@+id/edtloaigiay"/>
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="10dp"
+        android:id="@+id/in_updategiatien">
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nhập Giá Tiền"
+            android:id="@+id/edtgiatien"/>
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="10dp"
+        android:id="@+id/in_updateurl">
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nhập url giày"
+            android:id="@+id/edtavatagiay"/>
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="10dp"
+        android:id="@+id/in_addsl">
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nhập số lượng"
+            android:id="@+id/edtsoluong"/>
+    </com.google.android.material.textfield.TextInputLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         android:gravity="center"
-        >
+        android:orientation="horizontal">
         <Button
-            android:layout_width="180dp"
+            android:layout_width="170dp"
             android:layout_height="wrap_content"
-            android:hint="Thêm"
+            android:text="Update"
             android:textStyle="bold"
-            android:textSize="20sp"
-            android:backgroundTint="#72F1D8"
-            android:textColor="@color/black"
-            android:id="@+id/btnaddgiay"
             android:layout_marginRight="10dp"
-            />
+            android:backgroundTint="#C0CA33"
+            android:textSize="17dp"
+            android:id="@+id/btnaddgiay"/>
         <Button
-            android:layout_width="180dp"
+            android:layout_width="170dp"
             android:layout_height="wrap_content"
-            android:hint="Hủy"
+            android:text="Cancel"
             android:textStyle="bold"
-            android:textSize="20sp"
-            android:backgroundTint="#72F1D8"
-            android:textColor="@color/black"
-            android:id="@+id/btnhuyaddgiay"
-            />
+            android:backgroundTint="#555B60"
+            android:textSize="17dp"
+            android:id="@+id/btnhuyaddgiay"/>
     </LinearLayout>
-
-
 
 </LinearLayout>

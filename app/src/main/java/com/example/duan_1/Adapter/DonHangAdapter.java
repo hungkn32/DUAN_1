@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -46,20 +47,19 @@ public class DonHangAdapter extends RecyclerView.Adapter<DonHangAdapter.ViewHole
     public void onBindViewHolder(@NonNull ViewHoler holder, int position) {
         DonHang dh = list.get(position);
         holder.madh.setText(String.valueOf(dh.getMaDonHang()));
-        holder.tenkh.setText(dh.getTenkh());
-        holder.diachi.setText(dh.getDiachi());
-        holder.tengiay.setText(dh.getTengiay());
-        holder.loaigiay.setText(dh.getLoaigiay());
+//        holder.tenkh.setText(dh.getTenkh());
+//        holder.diachi.setText(dh.getDiachi());
+//        holder.tengiay.setText(dh.getTengiay());
+//        holder.loaigiay.setText(dh.getLoaigiay());
         holder.ngaymua.setText(dh.getNgayDatHang());
         holder.tongtien.setText(String.valueOf(dh.getTongTien()));
         holder.trangthai.setText(dh.getTrangthai());
-        holder.mataikhoan.setText(String.valueOf(dh.getMataikhoan()));
         holder.img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(context);
                 builder.setTitle("Delete");
-                builder.setMessage("Bạn thật sự muốn xóa Giày này!!");
+                builder.setMessage("Bạn thật sự muốn Hủy Đơn Hàng này!!");
                 builder.setPositiveButton("Xóa", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
@@ -89,18 +89,13 @@ public class DonHangAdapter extends RecyclerView.Adapter<DonHangAdapter.ViewHole
 
     public class ViewHoler extends RecyclerView.ViewHolder {
         TextView madh, tenkh, diachi, tengiay, loaigiay, ngaymua, tongtien, trangthai,mataikhoan;
-        ImageButton img;
+        Button img;
         public ViewHoler(@NonNull View itemView) {
             super(itemView);
             madh = itemView.findViewById(R.id.txtmadonhang);
-            tenkh = itemView.findViewById(R.id.txttenkh);
-            diachi = itemView.findViewById(R.id.txtdiachi);
-            tengiay = itemView.findViewById(R.id.txtgiay);
-            loaigiay = itemView.findViewById(R.id.txtloaigiay);
             ngaymua = itemView.findViewById(R.id.txtngaymua);
             tongtien = itemView.findViewById(R.id.txttongtien);
             trangthai = itemView.findViewById(R.id.txttrangthai);
-            mataikhoan = itemView.findViewById(R.id.txtmataikhoan);
             img = itemView.findViewById(R.id.donhangdelete);
         }
     }

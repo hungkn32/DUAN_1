@@ -11,18 +11,21 @@ import android.util.Log;
 
 import com.example.duan_1.Database.DBHelper;
 import com.example.duan_1.Model.DonHang;
-import com.example.duan_1.Model.hoadon;
+import com.example.duan_1.Model.giay;
+import com.example.duan_1.Model.top;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.List;
 
 public class DonHangDao {
     DBHelper dbHelper;
-    public DonHangDao(Context context){
+    Context context;
+
+    public DonHangDao(Context context) {
         dbHelper = new DBHelper(context);
     }
+
+
+
     public ArrayList<DonHang> getDsDonHang() {
         ArrayList<DonHang> list = new ArrayList<>();
         SQLiteDatabase database = dbHelper.getReadableDatabase();
@@ -30,7 +33,7 @@ public class DonHangDao {
             Cursor cursor = database.rawQuery("SELECT DONHANG.madonhang, ADMIN.mataikhoan, KHACHHANG.tenKH, KHACHHANG.diaChi, GIAY.tenGiay, GIAY.loaiGiay, DONHANG.ngaydathang, DONHANG.tongtien, DONHANG.trangthai\n" +
                     "FROM DONHANG\n" +
                     "LEFT JOIN ADMIN ON DONHANG.mataikhoan = ADMIN.mataikhoan\n" +
-                    "LEFT JOIN KHACHHANG ON DONHANG.tenKH = KHACHHANG.tenKH AND DONHANG.diaChi=KHACHHANG.diaChi\n" +
+                    "LEFT JOIN KHACHHANG ON DONHANG.tenKH = KHACHHANG.tenKH AND DONHANG.diaChi = KHACHHANG.diaChi\n" +
                     "LEFT JOIN GIAY ON DONHANG.tenGiay = GIAY.tenGiay AND DONHANG.loaiGiay = GIAY.loaiGiay;\n", null);
             if (cursor.getCount() > 0) {
                 cursor.moveToFirst();
@@ -53,13 +56,15 @@ public class DonHangDao {
         }
         return list;
     }
-    public boolean xoaDonHang(int madonhang){
+
+    public boolean xoaDonHang(int madonhang) {
         SQLiteDatabase sqLiteDatabase = dbHelper.getWritableDatabase();
-        long check = sqLiteDatabase.delete("DONHANG","madonhang = ?",new String[]{String.valueOf(madonhang)});
-        return check >0;
+        long check = sqLiteDatabase.delete("DONHANG", "madonhang = ?", new String[]{String.valueOf(madonhang)});
+        return check > 0;
 
     }
-//    public boolean updateDonHang(DonHang donHang) {
+
+    //    public boolean updateDonHang(DonHang donHang) {
 //        SQLiteDatabase sqLiteDatabase = dbHelper.getWritableDatabase();
 //        ContentValues values = new ContentValues();
 //        values.put("mataikhoan", donHang.getMaTaiKhoan());
@@ -69,17 +74,18 @@ public class DonHangDao {
 //        long check = sqLiteDatabase.update("DONHANG", values, "madonhang = ?", new String[]{String.valueOf(donHang.getMaDonHang())});
 //        return check > 0;
 //    }
-    public boolean insertDonHang(DonHang donHang){
+    public boolean insertDonHang(DonHang donHang) {
         SQLiteDatabase da = dbHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put("mataikhoan",donHang.getMataikhoan());
-        values.put("tenKH",donHang.getTenkh());
-        values.put("ngaydathang",donHang.getNgayDatHang());
-        values.put("tongtien",donHang.getTongTien());
-        values.put("trangthai",donHang.getTrangthai());
-        long check = da.insert("DONHANG",null,values);
-        return check>0;
+        values.put("mataikhoan", donHang.getMataikhoan());
+        values.put("tenKH", donHang.getTenkh());
+        values.put("ngaydathang", donHang.getNgayDatHang());
+        values.put("tongtien", donHang.getTongTien());
+        values.put("trangthai", donHang.getTrangthai());
+        long check = da.insert("DONHANG", null, values);
+        return check > 0;
     }
+
     public ArrayList<DonHang> getDonHangByMaTaiKhoan(int maTaiKhoan) {
         ArrayList<DonHang> list = new ArrayList<>();
         SQLiteDatabase database = dbHelper.getWritableDatabase();
@@ -106,15 +112,48 @@ public class DonHangDao {
         return list;
     }
 
-    public int getDoanhThu(String Start, String End){
-        Start = Start.replace("/","");
-        End = End.replace("/","");
+    public int getDoanhThu(String Start, String End) {
+        Start = Start.replace("/", "");
+        End = End.replace("/", "");
         SQLiteDatabase db = dbHelper.getWritableDatabase();
-        Cursor cursor = db.rawQuery("SELECT SUM(tongTien) FROM DONHANG WHERE substr(ngaydathang,7) || substr(ngaydathang,4,2) || substr(ngaydathang,1,2) BETWEEN ? and ?",new String[]{Start,End});
-        if(cursor.getCount() != 0){
+        Cursor cursor = db.rawQuery("SELECT SUM(tongTien) FROM DONHANG WHERE substr(ngaydathang,7) || substr(ngaydathang,4,2) || substr(ngaydathang,1,2) BETWEEN ? and ?", new String[]{Start, End});
+        if (cursor.getCount() != 0) {
             cursor.moveToFirst();
             return cursor.getInt(0);
         }
         return 0;
     }
+
+    @SuppressLint("Range")
+    public ArrayList<top> getTop() {
+
+        SQLiteDatabase database = dbHelper.getWritableDatabase();
+        String sqlTop = "SELECT tenGiay, count(tenGiay) as soLuong FROM DONHANG GROUP BY tenGiay ORDER BY soLuong DESC LIMIT 10";
+        ArrayList<top> list = new ArrayList<>();
+        giayDao dao = new giayDao(context);
+
+        Cursor cursor = null;
+        try {
+            cursor = database.rawQuery(sqlTop, null);
+
+            if (cursor != null && cursor.moveToFirst()) {
+                do {
+                    top t = new top();
+                    @SuppressLint("Range") giay g = dao.getID(cursor.getString(cursor.getColumnIndex("maGiay")));
+                    t.setTengiay(g.getTenGiay());
+                    t.setSoluong(Integer.parseInt(cursor.getString(cursor.getColumnIndex("soLuong"))));
+                    list.add(t);
+                } while (cursor.moveToNext());
+            }
+        } finally {
+            // Đảm bảo đóng Cursor sau khi sử dụng
+            if (cursor != null && !cursor.isClosed()) {
+                cursor.close();
+            }
+        }
+
+        return list;
+    }
+
+
 }

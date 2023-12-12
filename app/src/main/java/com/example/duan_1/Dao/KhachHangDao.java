@@ -6,7 +6,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.example.duan_1.Database.DBHelper;
-import com.example.duan_1.Model.giay;
 import com.example.duan_1.Model.khachhang;
 
 import java.util.ArrayList;
@@ -59,18 +58,9 @@ public class KhachHangDao {
             return true;
         }
     }
-    public int delete(int makh){
+    public boolean delete(int makh){
         database = dbHelper.getWritableDatabase();
-        Cursor cursor = database.rawQuery("select * from DONHANG where maKH = ?", new String[]{String.valueOf(makh)});
-        if (cursor.getCount() != 0) {
-            return -1;
-        }
-
-        long check = database.delete("KHACHHANG", "maKH = ?", new String[]{String.valueOf(makh)});
-        if (check == -1) {
-            return 0;
-        } else {
-            return 1;
-        }
+        long row = database.delete("KHACHHANG", "maKH=?", new String[]{String.valueOf(makh)});
+        return (row > 0);
     }
 }

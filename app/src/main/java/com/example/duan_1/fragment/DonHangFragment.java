@@ -1,40 +1,23 @@
 package com.example.duan_1.fragment;
 
-import android.app.Dialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.EditText;
-import android.widget.Spinner;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.duan_1.Adapter.DonHangAdapter;
-import com.example.duan_1.Adapter.GiaySpinerAdapter;
-import com.example.duan_1.Adapter.KhachHangSpinerAdapter;
 import com.example.duan_1.Dao.DonHangDao;
-import com.example.duan_1.Dao.KhachHangDao;
-import com.example.duan_1.Dao.giayDao;
 import com.example.duan_1.Model.DonHang;
-import com.example.duan_1.Model.giay;
-import com.example.duan_1.Model.hoadon;
-import com.example.duan_1.Model.khachhang;
 import com.example.duan_1.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 
 public class DonHangFragment extends Fragment {
     RecyclerView rcvdonhang;

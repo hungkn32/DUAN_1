@@ -4,6 +4,7 @@ public class DonHang {
     private int maDonHang;
     private int mataikhoan;
     private String tenkh;
+    private int magiay;
     private String diachi;
     private String tengiay;
     private String loaigiay;
@@ -16,18 +17,19 @@ public class DonHang {
     }
 
     public DonHang(int mataikhoan,String ngayDatHang,int tongTien,String trangthai){
-       this.mataikhoan = mataikhoan;;
+       this.mataikhoan = mataikhoan;
        this.ngayDatHang = ngayDatHang;
        this.tongTien = tongTien;
      this.trangthai = trangthai;
     }
 
-    public DonHang(int maDonHang,int mataikhoan, String tenkh,String diachi,String tengiay,String loaigiay, String ngayDatHang, int tongTien, String trangthai) {
+    public DonHang(int maDonHang,int mataikhoan, String tenkh,int magiay,String diachi,String tengiay,String loaigiay, String ngayDatHang, int tongTien, String trangthai) {
         this.maDonHang = maDonHang;
         this.mataikhoan= mataikhoan;
         this.tenkh = tenkh;
         this.diachi = diachi;
         this.tengiay = tengiay;
+        this.magiay =magiay;
         this.loaigiay =loaigiay;
         this.ngayDatHang = ngayDatHang;
         this.tongTien = tongTien;
@@ -53,6 +55,14 @@ public class DonHang {
 
     public String getNgayDatHang() {
         return ngayDatHang;
+    }
+
+    public int getMagiay() {
+        return magiay;
+    }
+
+    public void setMagiay(int magiay) {
+        this.magiay = magiay;
     }
 
     public void setNgayDatHang(String ngayDatHang) {

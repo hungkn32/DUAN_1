@@ -60,13 +60,23 @@
                 android:gravity="center"
                 />
             <TextView
+                android:id="@+id/txtsoluong"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8sp"
+                android:text=""
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:gravity="center"
+                />
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/gi_25"
                 android:textSize="20dp"
                 android:id="@+id/txtGiaSanPham"
                 android:textStyle="bold"
-                android:layout_marginLeft="20dp"
+                android:layout_marginLeft="30dp"
                 android:layout_marginTop="5dp"
                 android:textColor="#DC1111"
                 />

@@ -7,7 +7,7 @@
     android:layout_marginHorizontal="10sp"
     android:layout_marginTop="10sp"
     android:orientation="vertical"
-    app:cardCornerRadius="20sp">
+    app:cardCornerRadius="10sp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -22,6 +22,9 @@
             android:layout_height="150sp"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
+            android:layout_marginEnd="5sp"
+            android:layout_marginTop="5sp"
+            android:layout_marginStart="6sp"
             android:background="@drawable/img_18" />
 
         <LinearLayout
